@@ -312,7 +312,8 @@ span {
 }
 
 .about-img img {
-    width: 40vw;
+    /* width: 40vw; */
+    width: 30vw;
 }
 
 .heading {
