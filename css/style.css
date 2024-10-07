@@ -38,10 +38,12 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    max-width: 100%;
+
 }
 
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -115,12 +117,13 @@ body {
 
 section {
     min-height: 100vh;
-    padding: 10rem 7% 2rem;
+    padding: 10rem 9.5% 2rem;
 }
 
 .home {
     display: inline-flex;
     align-items: center;
+    
 }
 
 .home .home-content {
@@ -279,12 +282,16 @@ section {
     z-index: -1;
 }
 
+
+
+
 .home .profession-container .overlay {
     position: absolute;
     top: 0;
     right: 0;
     width: 0;
     height: 0;
+
     border-top: 50vh solid var(--main-color);
     border-right: 384px solid var(--main-color);
     border-bottom: 50vh solid var(--main-color);
@@ -353,7 +360,7 @@ span {
 }
 
 .services-container .services-box {
-    flex: 1 1 30rem;
+    flex: 1 1 20rem;
     background: var(--bg-color);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
@@ -756,13 +763,17 @@ span {
         color: var(--main-color);
     }
 
+    .navbar a:nth-child(2) {
+        color: var(--white-color);
+    }
+
     .navbar a.active::before {
         background: var(--main-color);
         opacity: .7;
     }
 
     .home .home-content {
-        max-width: 50rem;
+        max-width: 40rem;
     }
 
     .home .profession-container .profession-box {
@@ -770,7 +781,7 @@ span {
     }
 
     .home .profession-container .overlay {
-        right: -30%;
+        right: -26%;
     }
 
     .home-img img {
@@ -782,7 +793,11 @@ span {
     }
 }
 
-@media (max-width: 896px) {
+@media (max-width: 897px) {
+    .navbar a:nth-child(1) {
+        color: var(--main-color);
+    }
+
     .navbar a:nth-child(2) {
         color: var(--main-color);
     }
@@ -792,9 +807,10 @@ span {
     }
 
     .home .profession-container .overlay {
-        right: -43%;
+        right: -37%;
     }
 }
+
 
 @media (max-width: 879px) {
     .portfolio .portfolio-container {
@@ -813,13 +829,24 @@ span {
     }
 }
 
-@media (max-width: 780px) {
-    .navbar a:nth-child(2) {
-        color: var(--white-color);
+@media (max-width: 870px) {
+    .home .profession-container .overlay {
+        right: -38%;
+    }
+}
+@media (max-width: 850px) {
+    .home .profession-container .overlay {
+        right: -40%;
     }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 780px) {
+    .navbar a:nth-child(2) {
+        color: var(--main-color);
+    }
+} */
+
+@media (max-width: 815px) {
     #menu-icon {
         display: block;
     }
@@ -869,9 +896,17 @@ span {
     }
 
     .home {
-        padding: 0 25% 23rem;
+        display: block;
+        margin-top: 5%;
+        padding: 0 8% 23rem;
         justify-content: center;
         text-align: center;
+        
+    }
+
+    .home-content {
+        margin: auto;
+        width: 100%;
     }
 
     .home-content h3 {
@@ -948,6 +983,9 @@ span {
         text-align: center;
     }
 
+    .about-content {
+        padding: 0 0% 0;
+    }
     .about-content h2 {
         text-align: center;
     }
@@ -976,7 +1014,7 @@ span {
         grid-template-columns: 1fr;
     }
     .home .home-content {
-        margin-top: 100px;
+        margin-top: 10%;
     }
     
 }
@@ -1064,6 +1102,10 @@ span {
         width: 90%;
     }
 
+    .testimonial-slide p {
+        font-size: 1.2rem;
+        text-align: center;
+    }
 }
 
 @media (max-width: 383px) {
