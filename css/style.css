@@ -254,6 +254,7 @@ section {
     background-color: transparent
 }
 
+
 .home .profession-box .profession:nth-child(1) i {
     margin-right: 15px;
 }
@@ -306,6 +307,7 @@ section {
     max-width: 480px;
     max-height: 85vh;
 }
+
 
 span {
     color: var(--main-color);
@@ -682,6 +684,9 @@ span {
 @media (max-width: 1280px) {
     .home .profession-container .profession-box {
             display: none;
+            
+        
+        
         }
 
     .portfolio-layer h4 {
