@@ -78,7 +78,7 @@
                 </div>
                 <div class="profession" style="--i:3;">
                     <i class='bx bx-bar-chart-alt'></i>
-                    <h3>Data Analytics</h3>
+                    <h3>Data Analyst</h3>
                 </div>
 
                 <div class="circle"></div>
@@ -90,6 +90,13 @@
         <div class="home-img">
             <img src="images/home.png" alt="">
         </div>
+
+        <div class="text-container">
+            <!-- <span class="text first-text">I'm a </span> -->
+            <i class='bx bx-code-alt' id="myIcon"></i>
+            <span class="text second-text">Web Developer</span>
+        </div>
+
     </section>
 
     <!-- about section design -->
@@ -281,6 +288,33 @@
         function clearForm() {
           document.getElementById("myContactForm").reset();
         }
+    </script>
+
+    <script>
+        const text = document.querySelector(".second-text");
+        const element = document.getElementById("myIcon");
+
+        const textLoad = () => {
+            setTimeout(() => {
+                text.textContent = "Web Developer";
+                element.className = "bx bx-code-alt"
+            }, 0);
+            setTimeout(() => {
+                text.textContent = "Web UI Designer";
+                element.className = "bx bx-palette" 
+            }, 4100);
+            setTimeout(() => {
+                text.textContent = "Automation Expert";
+                element.className = "bx bx-sitemap" 
+            }, 8300);
+            setTimeout(() => {
+                text.textContent = "Data Analyst";
+                element.className = "bx bx-bar-chart-alt" 
+            }, 12200);
+        }
+
+        textLoad();
+        setInterval(textLoad, 16100);
     </script>
 
     <!-- scroll reveal -->

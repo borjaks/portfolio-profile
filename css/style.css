@@ -315,6 +315,51 @@ section {
     max-height: 85vh;
 }
 
+.text-container {
+    display: none;
+    /* display: flex; */
+    margin-top: 30px;
+    width: 100%;
+    overflow: hidden;
+    flex-direction: column-reverse;
+    gap: 5px;
+}
+
+.text-container .text {
+    position: relative;
+    color: var(--main-color);
+    font-size: 30px;
+    font-weight: 600;
+    
+}
+
+.text-container i {
+    font-size: 3.8rem;
+    color: var(--main-color);
+   
+}
+
+.text.second-text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-left: 2px solid var(--main-color);
+    animation: animate 4s steps(12) infinite;
+}
+
+@keyframes animate {
+    40%, 60% {
+        left: 100%;
+    }
+    100% {
+        left: 0%;
+    }
+}
 
 span {
     color: var(--main-color);
@@ -691,9 +736,6 @@ span {
 @media (max-width: 1280px) {
     .home .profession-container .profession-box {
             display: none;
-            
-        
-        
         }
 
     .portfolio-layer h4 {
@@ -706,6 +748,25 @@ span {
         font-size: 1.5rem;
         margin: .3rem 0 1rem;
     }
+
+    .text-container {
+        display: inline-block;
+        margin-top: -230px;
+        margin-left: 50px;
+        width: 100%;
+        
+    }
+
+    .text-container .text {
+        font-size: 20px;
+        
+    }
+
+    .text-container i {
+        font-size: 20px;
+       
+    }
+
 }
 
 @media (max-width: 1200px) {
@@ -780,6 +841,11 @@ span {
     .home .profession-container .overlay {
         right: -12%;
     }
+
+    .text-container {
+        display: none;
+    }
+    
 
     /* .home-img img {
         max-width: 400px;
@@ -881,6 +947,19 @@ span {
 } */
 
 @media (max-width: 815px) {
+    .text-container {
+        display: none;
+    }
+    
+    .text-container .text {
+        font-size: 30px;
+        
+    }
+    
+    .text-container i {
+        font-size: 3.8rem;
+    }
+
     #menu-icon {
         display: block;
     }
@@ -1051,6 +1130,31 @@ span {
         margin-top: 10%;
     }
     
+    .text-container {
+        display: flex;
+        margin-top: 30px;
+        margin-left: 0px;
+        width: auto;
+        overflow: hidden;
+        flex-direction: column-reverse;
+        gap: 5px;
+    }
+    
+    .text-container .text {
+        position: relative;
+        color: var(--main-color);
+        font-size: 20px;
+        font-weight: 600;
+        
+    }
+    
+    .text-container i {
+        font-size: 3.8rem;
+        color: var(--main-color);
+       
+    }
+    
+    
 }
 
 @media (max-width: 455px) {
@@ -1161,13 +1265,41 @@ span {
     .about-img img {
         width: 90vw;
     }
-    
+    .home {
+        margin: 0;
+        margin-top: 50px;
+        padding: 0;
+        display: block;
+        max-width: 100%;
+        width: 100%;
+    }
+    .home-content h1 {
+        font-size: 1.6rem;
+    }
 
+    .home-content p {
+        font-size: 1.4rem;
+        padding: 0 30px;
+        margin: auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .home .home-content {
+        margin-top: 0;
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .text-container {
+        margin-top: 30px;
+    }
 }
 
 @media (max-width: 364px) {
     .home {
-        padding: 50px 25% 23rem;
+        /* padding: 50px 25% 23rem; */
         justify-content: center;
         text-align: center;
     }
@@ -1177,10 +1309,12 @@ span {
 }
 
 @media (max-width: 315px) {
-    .home-content h1 {
-        font-size: 4.5rem;
+    .home {
+        margin: 0;
+        padding: 0;
     }
 }
+    
 img {
     border-radius: 20px;
 }
