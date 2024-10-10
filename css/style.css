@@ -304,7 +304,7 @@ section {
     right: 30px;
     pointer-events: none;
     max-width: 480px;
-    max-height: 100vh;
+    max-height: 85vh;
 }
 
 span {
@@ -319,7 +319,6 @@ span {
 }
 
 .about-img img {
-    /* width: 40vw; */
     width: 30vw;
 }
 
