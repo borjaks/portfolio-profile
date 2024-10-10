@@ -67,6 +67,13 @@ body {
     margin-right: auto;
 }
 
+a .sitelogo {
+    vertical-align: middle;
+    margin-right: 10px;
+    height: 32px;
+    width: 32px;
+}
+
 .navbar a {
     position: relative;
     font-size: 1.7rem;
