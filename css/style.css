@@ -368,13 +368,13 @@ span {
     border-top: .6rem solid var(--main-color);
     border-bottom: .6rem solid var(--main-color);
     transition: .5s ease;
-    height: 500px;
-
+    height: 400px;
 }
 
 .services-container .services-box:hover {
     box-shadow: 0 .1rem 2rem var(--shadow-color);
     transform: scale(1.02);
+
 }
 
 .services-box i {
@@ -396,7 +396,7 @@ span {
 .services-box p {
     font-size: 1.6rem;
     margin: 1rem 0 3rem;
-    height: 100px;
+    height: fit-content;
 }
 
 .portfolio {
