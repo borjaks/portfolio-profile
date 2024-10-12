@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #fdfdfd;
+    --text-color: #333;
+    --main-color: royalblue;
+    --white-color: #fdfdfd;
+    --shadow-color: rgba(0, 0, 0, .2);
+}
+
+*::selection {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+.dark-mode {
+    --bg-color: #0b061f;
+    --text-color: #fdfdfd;
+    --shadow-color: rgba(0, 0, 0, .7);
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    max-width: 100%;
+    overflow: hidden;
+
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 7%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    transition: .5s;
+}
+
+.header.sticky {
+    background: var(--bg-color);
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--main-color);
+    font-weight: 600;
+    margin-right: auto;
+}
+
+a .sitelogo {
+    vertical-align: middle;
+    margin-right: 10px;
+    height: 32px;
+    width: 32px;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 1.7rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-right: 3.5rem;
+}
+
+.header.sticky .navbar a {
+    color: var(--text-color);
+}
+
+.header.sticky .navbar a.active {
+    color: var(--main-color);
+}
+
+.navbar a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: .2rem;
+    background: var(--white-color);
+}
+
+.header.sticky .navbar a::before {
+    background: var(--main-color);
+    opacity: .7;
+}
+
+#darkMode-icon {
+    font-size: 2.4rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.header.sticky #darkMode-icon {
+    color: var(--text-color);
+    opacity: .9;
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    display: none;
+}
+
+
+.heading {
+    font-size: 4.5rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+span {
+    color: var(--main-color);
+}
+
+/* NEW */
+
+.carousel {
+    position: relative;
+    z-index: -1;
+    height: 100vh;
+    pointer-events: none;
+    margin-top: 0px;
+  }
+
+  .carousel-item {
+    --items: 7;
+    --width: 650px;
+    --height: clamp(200px, 40vw, 450px);
+    --x: calc(var(--active) * 600%);
+    --y: calc(var(--active) * 20%);
+    --rot: calc(var(--active) * 120deg);
+    --opacity: calc(var(--zIndex) / var(--items) * 3 - 2);
+    overflow: hidden;
+    position: absolute;
+    z-index: var(--zIndex);
+    width: var(--width);
+    height: var(--height);
+    margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
+    border-radius: 10px;
+    top: 45%;
+    left: 50%;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    transform-origin: 50% 50%;
+    box-shadow: 0 10px 50px 10px rgba(0, 0, 0, 0.5);
+    background: black;
+    pointer-events: all;
+    transform: translate(var(--x), var(--y)) rotate(var(--rot));
+    transition: transform 0.8s cubic-bezier(0, 0.02, 0, 1);
+    object-fit: cover;
+  }
+
+  .carousel-item .carousel-box {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
+    opacity: var(--opacity);
+    font-family: "Orelo-sw-db", serif;
+  }
+
+  .carousel-item .carousel-box:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5));
+  }
+
+  .carousel-item .title {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    bottom: 20px;
+    left: 20px;
+    transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
+    font-size: clamp(20px, 3vw, 30px);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+      object-fit: cover;
+    pointer-events: none;
+  }
+
+  .layout {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .layout:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 90px;
+    width: 10px;
+    height: 100%;
+    border: 1px solid #fff;
+    border-top: none;
+    border-bottom: none;
+    opacity: 0.15;
+  }
+
+  .layout .box {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    color: #fff;
+    transform-origin: 0% 10%;
+    transform: rotate(-90deg);
+    font-size: 9px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  .cursor {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    --size: 40px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: calc(var(--size) * -0.5) 0 0 calc(var(--size) * -0.5);
+    transition: transform 0.85s cubic-bezier(0, 0.02, 0, 1);
+    display: none;
+    pointer-events: none;
+  }
+
+  @media (pointer: fine) {
+    .cursor {
+      display: block;
+    }
+  }
+  
+  .cursor2 {
+    --size: 5px;
+    transition-duration: 0.7s;
+  }
+
+  @media (max-width: 1100px) {
+    .carousel-item {
+      --width: 650px;
+      --height: clamp(200px, 50vw, 550px);
+    }
+    .carousel-item img {
+      -o-object-fit: fill;
+        object-fit: fill;
+        height: 95%;
+        width: 100%;
+        position: absolute;
+        TOP: 50%;
+        transform: translatey(-50%);
+      pointer-events: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .header {
+        padding: 2rem 3%;
+    }
+  }
+  @media (max-width: 815px) {
+      #menu-icon {
+        display: block;
+    }
+
+    #darkMode-icon {
+        position: absolute;
+        right: 7rem;
+        font-size: 2.6rem;
+        color: var(--text-color);
+        margin-bottom: .1rem;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        display: none;
+    }
+
+    .navbar.active {
+        display: block;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        color: var(--text-color);
+    }
+
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2) {
+        color: var(--text-color);
+    }
+
+    .navbar a.active {
+        color: var(--main-color);
+    }
+
+    .navbar a::before {
+        display: none;
+    }
+
+    .heading {
+      font-size: 4.0rem;
+  }
+  }
+  @media (max-width: 720px) {
+  
+    .carousel-item {
+      --width: 500px;
+      --height: clamp(200px, 70vw, 550px);
+    }
+
+    .carousel-item img {
+      -o-object-fit: fill;
+        object-fit: fill;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        TOP: 50%;
+        transform: translatey(-50%);
+      pointer-events: none;
+    }
+
+  }
+
+  @media (max-width: 540px) {
+    .heading {
+      font-size: 3.5rem;
+  }
+    .carousel-item {
+      --width: 400px;
+      --height: clamp(200px, 70vw, 550px);
+    }
+
+    .carousel-item img {
+      -o-object-fit: fill;
+        object-fit: fill;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        TOP: 50%;
+        transform: translatey(-50%);
+      pointer-events: none;
+    }
+  }
+  @media (max-width: 450px) {
+    html {
+        font-size: 60%;
+    }
+
+    #darkMode-icon {
+        right: 6rem;
+    }
+  }
+    @media (max-width: 420px) {
+  
+      .carousel-item {
+        display: block;
+        --width: 350px;
+        --height: clamp(200px, 70vw, 550px);
+        margin: calc(var(--height) * -0.8) 0 0 calc(var(--width) * -0.5);
+        border-radius: 10px;
+      }
+  
+      .carousel-item img {
+        -o-object-fit: fill;
+          object-fit: fill;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          TOP: 50%;
+          transform: translatey(-50%);
+        pointer-events: none;
+      }
+  }
+
+  @media (orientation : landscape) {         
+    .heading {
+    margin-bottom: 100px;
+    }
+  }
