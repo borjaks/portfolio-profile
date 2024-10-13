@@ -214,6 +214,7 @@ span {
     -o-object-fit: cover;
       object-fit: cover;
     pointer-events: none;
+    cursor: pointer;
   }
 
   .layout {
