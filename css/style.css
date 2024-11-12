@@ -449,7 +449,7 @@ height: 100%;
 
 .services-container .services-box:hover {
     box-shadow: 0 .1rem 2rem var(--shadow-color);
-    transform: scale(1.02);
+    transform: scale(1.06);
 
 }
 
