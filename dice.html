@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="dice.css" />
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Rye&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      
+      
+      <div class="result-container">
+          <h1>Dice Game</h1>
+          <h2>🎲 <p id="result">PLACE YOUR BET AND ROLL THE DICE</p> 🎲</h2>
+       </div>
+
+      <div class="dice-container">
+        <div class="dice">
+          <p>Player 1</p>
+          <img class="img1" src="images/dice/dice6.png" />
+        </div>
+
+        <div class="dice">
+          <p>Player 2</p>
+          <img class="img2" src="images/dice/dice6.png" />
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button onclick="rollDice()" id="rollDice">ROLL</button>
+        <p id="cash-amount">CASH: </p>
+       </div>
+
+      <div class="score-container">
+
+        <div class="player-container player1-container">
+          <h3 class="bet-amount" id="bet-amount1">BET:</h3>
+          <h3 class="score title">Player 1</h3>
+          <h3 class="score result result1">0</h3>
+          <button onclick="betPlayer1()" id="betPlayer1" class="bet-btn">BET $1000</button>
+          <button onclick="betRemovePlayer1()" id="betRemovePlayer1" class="remove-btn">Remove Bet</button>
+        </div>
+        
+
+        <div class="player-container player2-container">
+          <h3 class="bet-amount" id="bet-amount2">BET:</h3>
+          <h3 class="score title">Player 2</h3>
+          <h3 class="score result result2">0</h3>
+          <button onclick="betPlayer2()" id="betPlayer2" class="bet-btn">BET $1000</button>
+          <button onclick="betRemovePlayer2()" id="betRemovePlayer2" class="remove-btn">Remove Bet</button>
+        </div>
+
+      </div>
+
+      
+
+      
+    </div>
+    <footer>Copyright &copy; 2024 | <a href="https://workwithborj.com/">WORKWITHBORJ</a></footer>
+    
+
+    
+
+    
+
+    <script src="dice.js" charset="utf-8"></script>
+  </body>
+</html>
