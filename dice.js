@@ -71,7 +71,7 @@ function betRemovePlayer2() {
 function rollDice() {
     const dice1 = document.getElementById('dice1');
     const dice2 = document.getElementById('dice2');
-    
+
     // Start animation
     dice1.classList.add('rolling');
     dice2.classList.add('rolling');
@@ -141,9 +141,10 @@ function rollDice() {
             document.getElementById("betPlayer2").style.visibility = 'visible';
         }
         
+        checkCash();
+
     }, 700);
 
-    checkCash();
 }
 
 //Check Cash Balance
