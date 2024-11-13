@@ -1,5 +1,4 @@
     //Set Global Variables
-    let diceWindow;
     var playerScore1 = 0;
     var playerScore2 = 0;
     var playerBet1 = 0;
@@ -123,6 +122,7 @@ function rollDice() {
             document.getElementById("rollDice").style.visibility = 'hidden';
             document.getElementById("betPlayer2").style.visibility = 'visible';
             document.getElementById("betPlayer1").style.visibility = 'visible';
+            checkCash();
             }
         else {
             playerScore2++;
@@ -139,10 +139,8 @@ function rollDice() {
             document.getElementById("rollDice").style.visibility = 'hidden';
             document.getElementById("betPlayer1").style.visibility = 'visible';
             document.getElementById("betPlayer2").style.visibility = 'visible';
+            checkCash();
         }
-        
-        checkCash();
-
     }, 700);
 
 }
@@ -157,7 +155,6 @@ function checkCash() {
         document.getElementById("betPlayer1").style.visibility = 'hidden';
         document.getElementById("betPlayer2").style.visibility = 'hidden';
         alert("GAMEOVER! You have no more Cash!");
-        diceWindow.close();
     }
 }
 
