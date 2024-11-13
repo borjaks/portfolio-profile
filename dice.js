@@ -101,6 +101,7 @@ function rollDice() {
         playerScore1++;
         playerCash = playerCash + playerBet1 * 2;
         playerBet1 = 0;
+        playerBet2 = 0;
         document.querySelector("#result").innerHTML = "Player 1 Wins";
         document.querySelector(".result1").innerHTML = playerScore1;
         document.getElementById("cash-amount").innerHTML = "CASH: $" + playerCash;
@@ -115,6 +116,7 @@ function rollDice() {
     else {
         playerScore2++;
         playerCash = playerCash + playerBet2 * 2;
+        playerBet2 = 0;
         playerBet1 = 0;
         document.querySelector("#result").innerHTML = "Player 2 Wins";
         document.querySelector(".result2").innerHTML = playerScore2;
