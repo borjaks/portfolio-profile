@@ -71,11 +71,12 @@ function betRemovePlayer2() {
 function rollDice() {
     const dice1 = document.getElementById('dice1');
     const dice2 = document.getElementById('dice2');
+    
     // Start animation
     dice1.classList.add('rolling');
     dice2.classList.add('rolling');
     
-    // Stop animation and show the result after 1 second
+    // Stop animation and show the result after 0.7 seconds
     setTimeout(() => {
         dice1.classList.remove('rolling');
         dice2.classList.remove('rolling');
@@ -140,7 +141,7 @@ function rollDice() {
             document.getElementById("betPlayer2").style.visibility = 'visible';
         }
         
-    }, 1000);
+    }, 700);
 
     checkCash();
 }
