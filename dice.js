@@ -108,6 +108,9 @@ function rollDice() {
         document.getElementById("bet-amount2").innerHTML = "BET: $" + playerBet2;
         document.getElementById("betRemovePlayer2").style.visibility = 'hidden';
         document.getElementById("betRemovePlayer1").style.visibility = 'hidden';
+        document.getElementById("rollDice").style.visibility = 'hidden';
+        document.getElementById("betPlayer2").style.visibility = 'visible';
+        document.getElementById("betPlayer1").style.visibility = 'visible';
         }
     else {
         playerScore2++;
@@ -120,6 +123,9 @@ function rollDice() {
         document.getElementById("bet-amount1").innerHTML = "BET: $" + playerBet1;
         document.getElementById("betRemovePlayer1").style.visibility = 'hidden';
         document.getElementById("betRemovePlayer2").style.visibility = 'hidden';
+        document.getElementById("rollDice").style.visibility = 'hidden';
+        document.getElementById("betPlayer1").style.visibility = 'visible';
+        document.getElementById("betPlayer2").style.visibility = 'visible';
     }
 
     checkCash();
