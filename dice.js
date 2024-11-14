@@ -146,13 +146,3 @@ function resetAfterRoll() {
     document.getElementById("betPlayer2").style.visibility = 'visible';
 }
 
-// Check Cash Balance
-function checkCash() {
-    if (playerCash <= 0) {
-        document.getElementById("rollDice").style.visibility = 'hidden';
-        document.getElementById("betRemovePlayer1").style.visibility = 'hidden';
-        document.getElementById("betRemovePlayer2").style.visibility = 'hidden';
-        document.getElementById("betPlayer1").style.visibility = 'hidden';
-        document.getElementById("betPlayer2").style.visibility = 'hidden';
-    }
-}
