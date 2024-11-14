@@ -3,7 +3,7 @@ let playerScore1 = 0;
 let playerScore2 = 0;
 let playerBet1 = 0;
 let playerBet2 = 0;
-let playerCash = 1000;
+let playerCash = 10000;
 
 document.addEventListener("DOMContentLoaded", () => {
     // Initialize display values
@@ -79,7 +79,7 @@ function rollDice() {
     dice1.classList.add('rolling');
     dice2.classList.add('rolling');
 
-    // Stop animation and show the result after 0.7 seconds
+    // Stop animation and show the result after 0.8 seconds
     setTimeout(() => {
         dice1.classList.remove('rolling');
         dice2.classList.remove('rolling');
@@ -133,7 +133,7 @@ function rollDice() {
         }
 
         
-    }, 700);
+    }, 800);
 }
 
 // Reset after a roll
