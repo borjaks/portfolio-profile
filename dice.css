@@ -232,12 +232,13 @@ footer {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  padding: 2rem 0;
   background-color: #232931;
   border-top: 1px solid #393E46;
   color: #EEEEEE;
   font-family: 'Orbitron', cursive;
   font-size: 20px;
-  height: 100px;
+  /* height: 100px; */
   max-width: 80%;
   
 }
