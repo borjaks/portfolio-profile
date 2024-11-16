@@ -1,5 +1,5 @@
 
-var buttonColours = ["red", "blue", "green", "yellow"];
+var buttonColors = ["red", "blue", "green", "yellow"];
 
 var gamePattern = [];
 var userClickedPattern = [];
@@ -65,11 +65,11 @@ $(".btn").click(function() {
   }
   else {
   
-  var userChosenColour = $(this).attr("id");
-  userClickedPattern.push(userChosenColour);
+  var userChosenColor = $(this).attr("id");
+  userClickedPattern.push(userChosenColor);
 
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
+  playSound(userChosenColor);
+  animatePress(userChosenColor);
 
   checkAnswer(userClickedPattern.length-1);
   }
@@ -120,11 +120,10 @@ function nextSequence() {
   level++;
   $("#level-title").text("Level " + level);
   var randomNumber = Math.floor(Math.random() * 4);
-  var randomChosenColour = buttonColours[randomNumber];
-  gamePattern.push(randomChosenColour);
+  var randomChosenColor = buttonColors[randomNumber];
+  gamePattern.push(randomChosenColor);
 
-  // $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
-  playSound(randomChosenColour);
+  playSound(randomChosenColor);
   animateGamePattern();
 
   $("#game-pattern").hide();
@@ -137,11 +136,11 @@ function animateGamePattern() {
 
   function animateNext() {
     if (i < gamePattern.length) {
-      const currentColour = gamePattern[i];
-      $("#" + currentColour)
+      const currentColor = gamePattern[i];
+      $("#" + currentColor)
         .fadeOut(100)
         .fadeIn(100, function () {
-          playSound(currentColour); // Play sound during fade-in
+          playSound(currentColor); // Play sound during fade-in
         });
 
       i++;
@@ -170,9 +169,6 @@ function playSound(name) {
 
 //Game Restart
 function startOver() {
-  if (score >= topscore){
-    topscore = score;
-  }
   level = 0;
   score = 0; // Reset score
   hints = 3;
@@ -182,6 +178,9 @@ function startOver() {
   started = false;
   $("#show-pattern").prop("disabled", true);
   $("#show-pattern").css("opacity", "0");
+  if (score >= topscore){
+    topscore = score;
+  }
 }
 
 
