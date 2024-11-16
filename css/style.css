@@ -82,6 +82,12 @@ a .sitelogo {
     margin-right: 3.5rem;
 }
 
+.port-nav a{
+    color: var(--text-color);
+}
+
+
+
 .header.sticky .navbar a {
     color: var(--text-color);
 }
@@ -100,6 +106,10 @@ a .sitelogo {
     background: var(--white-color);
 }
 
+.port-nav a.active::before {
+    background: var(--text-color);
+}
+
 .header.sticky .navbar a::before {
     background: var(--main-color);
     opacity: .7;
@@ -111,6 +121,12 @@ a .sitelogo {
     cursor: pointer;
 }
 
+#darkMode-icon-port {
+    font-size: 2.4rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
 .header.sticky #darkMode-icon {
     color: var(--text-color);
     opacity: .9;
@@ -119,6 +135,12 @@ a .sitelogo {
 #menu-icon {
     font-size: 3.6rem;
     color: var(--text-color);
+    display: none;
+}
+
+#menu-icon-port {
+    font-size: 3.6rem;
+    color: var(--main-color);
     display: none;
 }
 

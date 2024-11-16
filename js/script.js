@@ -66,7 +66,6 @@ darkModeIcon.onclick = () => {
     document.body.classList.toggle('dark-mode');
 };
 
-
 /*========== scroll reveal ==========*/
 ScrollReveal({
     // reset: true,
