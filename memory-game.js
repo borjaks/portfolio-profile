@@ -169,6 +169,9 @@ function playSound(name) {
 
 //Game Restart
 function startOver() {
+  if (score >= topscore){
+    topscore = score;
+  }
   level = 0;
   score = 0; // Reset score
   hints = 3;
@@ -178,9 +181,7 @@ function startOver() {
   started = false;
   $("#show-pattern").prop("disabled", true);
   $("#show-pattern").css("opacity", "0");
-  if (score >= topscore){
-    topscore = score;
-  }
+
 }
 
 
