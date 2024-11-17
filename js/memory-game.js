@@ -77,38 +77,7 @@ $(".btn").click(function() {
 });
 
 
-//Check and Compare User Pattern from Game Pattern
-function checkAnswer(currentLevel) {
 
-    //Success Path
-    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-      if (userClickedPattern.length === gamePattern.length){
-        score += level * 10; // Increment score based on the level
-        $("#score").text("Score: " + score); // Update score display
-        $("#hints").text("Hints Left: " + hints);
-        setTimeout(function () {
-          nextSequence();
-        }, 1000);
-      }
-    } 
-    
-    //Failed Path
-    else {
-      playSound("wrong");
-      $("body").addClass("game-over");
-      $("#level-title").text("[ Game Over! ]");
-
-      setTimeout(function () {
-        $("body").removeClass("game-over");
-      }, 200);
-
-      setTimeout(function () {
-        $("#level-title").text("[ Press Any Key to Restart ]");
-      }, 1000);
-
-      startOver();
-    }
-}
 
 //New Game Level
 function nextSequence() {
@@ -129,6 +98,69 @@ function nextSequence() {
   $("#game-pattern").hide();
 
 }
+
+//Check and Compare User Pattern from Game Pattern
+function checkAnswer(currentLevel) {
+
+  //Success Path
+  if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+    if (userClickedPattern.length === gamePattern.length){
+      score += level * 10; // Increment score based on the level
+      $("#score").text("Score: " + score); // Update score display
+      $("#hints").text("Hints Left: " + hints);
+      setTimeout(function () {
+        nextSequence();
+      }, 1000);
+    }
+  } 
+  
+  //Failed Path
+  else {
+    playSound("wrong");
+    $("body").addClass("game-over");
+    $("#level-title").text("[ Game Over! ]");
+
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 200);
+
+    startOver();
+  }
+}
+
+
+//Game Restart
+function startOver() {
+  if (score >= topscore){
+    topscore = score;
+    resetGame();
+  }
+  else {
+    resetGame();
+  }
+}
+
+function resetGame() {
+  level = 0;
+  score = 0; // Reset score
+  hints = 3;
+  $("#score").text("Score: " + score); // Reset score display
+  $("#top-score").text("High Score: " + topscore); // Reset score display
+  gamePattern = [];
+  started = false;
+
+
+  setTimeout(function () {
+    $("#level-title").text("[ Press Any Key to Restart ]");
+    $("#show-pattern").prop("disabled", true);
+    $("#show-pattern").css("opacity", "0");
+  }, 1000);
+}
+  
+  
+
+
+
 
 // Sequential Animation for the Game Pattern
 function animateGamePattern() {
@@ -164,24 +196,6 @@ function animatePress(currentColor) {
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
-}
-
-
-//Game Restart
-function startOver() {
-  if (score >= topscore){
-    topscore = score;
-  }
-  level = 0;
-  score = 0; // Reset score
-  hints = 3;
-  $("#score").text("Score: " + score); // Reset score display
-  $("#top-score").text("High Score: " + topscore); // Reset score display
-  gamePattern = [];
-  started = false;
-  $("#show-pattern").prop("disabled", true);
-  $("#show-pattern").css("opacity", "0");
-
 }
 
 
