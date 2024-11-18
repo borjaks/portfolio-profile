@@ -500,6 +500,19 @@ height: 100%;
 .portfolio {
     min-height: auto;
     padding-bottom: 10rem;
+    justify-items: center;
+}
+
+.btn-portfolio {
+    margin-top: 2.5rem;
+    color: var(--text-color);
+    background: none;
+}
+
+.btn-portfolio:hover {
+    background: transparent;
+    color: var(--main-color);
+    border-color: var(--main-color);
 }
 
 .portfolio h2 {
