@@ -1447,7 +1447,7 @@ height: 100%;
 }
 @media (max-width: 415px) {
 
-    .btn-cv {
+    .btn-cv, .btn-portfolio {
         font-size: 9px;
     }
     .home-content .social-media {
@@ -1489,7 +1489,7 @@ height: 100%;
 
 @media (max-width: 383px) {
 
-    .btn-cv {
+    .btn-cv, .btn-portfolio {
         font-size: 9px;
     }
     .home-content .social-media {
