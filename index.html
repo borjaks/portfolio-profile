@@ -23,6 +23,7 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -134,8 +135,10 @@
                 Now transitioning into freelancing, I’m excited to bring my expertise to new clients, ensuring that every project I undertake meets the highest standards. I’m committed to continuous learning, regularly upskilling through platforms like Udemy, Domestika, and attending bootcamps and webinars.
             </p>
             <p>Let’s collaborate to bring your vision to life!</p>
+            <div class="btn-container">
             <a href="/docs/Raldz Borja (New CV 2025).pdf" target="_blank" class="btn btn-cv" id="trackBtn" download>Download CV</a>
-
+            <a href="./certificates.html" class="btn btn-cv btn-certs">View Certificates</a>
+            </div>
 
             </div>
         </div>
@@ -319,13 +322,18 @@
     <!-- footer design -->
     <footer class="footer">
         <div class="footer-text">
-            <p>Copyright &copy; 2024 | All Rights Reserved.</p>
+            <p>Copyright &copy; <span id="year"></span> | All Rights Reserved.</p>
         </div>
 
         <div class="footer-iconTop">
             <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
         </div>
     </footer>
+
+    <script>
+        const currentYear = new Date().getFullYear();
+        document.getElementById('year').textContent = currentYear;
+    </script>
 
     <script>
         function clearForm() {
