@@ -161,6 +161,7 @@ span {
   border-color: var(--main-color);
 }
 
+
 /* NEW */
 
 .carousel {
@@ -728,6 +729,13 @@ span {
           transform: translateY(-50%);
         pointer-events: none;
       }
+  }
+
+  @media (max-width: 415px) {
+    .btn-view {
+      font-size: 9px;
+  }
+  
   }
 
   @media (max-width: 370px) {
