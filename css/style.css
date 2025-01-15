@@ -162,7 +162,7 @@ section {
 
 .home .home-content {
     max-width: 44rem;
-    margin-top: -25%;
+    /* margin-top: -25%; */
 }
 
 .home-content h3 {
