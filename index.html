@@ -92,7 +92,7 @@
         </div>
 
         <div class="home-img">
-            <img src="images/home.png" alt="">
+            <img id="heropic" src="images/home.png" alt="">
         </div>
 
         <div class="text-container">
@@ -182,6 +182,16 @@
 
         <div class="portfolio-container">
             <div class="portfolio-box">
+                <img src="images/SoleTouched Web Dev.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>Wordpress Site Development</h4>
+                    <p>A fully responsive website built in WordPress using Elementor for a Shoe Restoration Brand that also offers Sneaker Care Products. The site features Animated Images, Motion Effects, Payment Integrations</p>
+                    <a href="./portoflio-8.html"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-box">
                 <img src="images/SoleTouchedUI.png" alt="">
 
                 <div class="portfolio-layer">
@@ -210,7 +220,8 @@
                     <a href="./portfolio-2.html"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+
+            <!-- <div class="portfolio-box">
                 <img src="images/hifi.png" alt="">
 
                 <div class="portfolio-layer">
@@ -218,7 +229,7 @@
                     <p>Mobile prototype designed in Figma for an eco-friendly bike store specializing in bamboo-made bikes. This project is tailored for an environmentally responsible brand.</p>
                     <a href="./portfolio-3.html"><i class='bx bx-link-external'></i></a>
                 </div>
-            </div>
+            </div> -->
             
             <div class="portfolio-box">
                 <img src="images/dashboards.png" alt="">
@@ -452,6 +463,17 @@
 
     <!-- custom js -->
     <script src="js/script.js"></script>
+
+    <!-- parallax effect js -->
+    <script>
+        const xborj = document.getElementById("heropic");
+
+        window.addEventListener("scroll", () => {
+            let value = window.scrollY;
+
+            xborj.style.right = value * -1.5 + "px";
+        });
+    </script>
 </body>
 
 </html>
