@@ -544,97 +544,6 @@
       }
     </script>
 
-    <script>
-      const text = document.querySelector(".second-text");
-      const element = document.getElementById("myIcon");
-
-      const textLoad = () => {
-        setTimeout(() => {
-          text.textContent = "Web Developer";
-          element.className = "bx bx-code-alt";
-        }, 0);
-        setTimeout(() => {
-          text.textContent = "Web UI Designer";
-          element.className = "bx bx-palette";
-        }, 4100);
-        setTimeout(() => {
-          text.textContent = "Automation Expert";
-          element.className = "bx bx-sitemap";
-        }, 8300);
-        setTimeout(() => {
-          text.textContent = "Data Analyst";
-          element.className = "bx bx-bar-chart-alt";
-        }, 12200);
-      };
-
-      textLoad();
-      setInterval(textLoad, 16100);
-    </script>
-
-    <script>
-      // Function to get browser, OS, and screen resolution details
-      function getDeviceDetails() {
-        const userAgent = navigator.userAgent;
-        const browser = navigator.appName;
-        const browserVersion = navigator.appVersion;
-        const os = navigator.platform;
-        const screenWidth = window.screen.width;
-        const screenHeight = window.screen.height;
-
-        return {
-          browser: `${browser} ${browserVersion}`,
-          os: os,
-          screenResolution: `${screenWidth}x${screenHeight}`,
-          userAgent: userAgent,
-        };
-      }
-
-      document
-        .getElementById("trackBtn")
-        .addEventListener("click", function () {
-          // Get IP address
-          fetch("https://api.ipify.org?format=json")
-            .then((response) => response.json())
-            .then((data) => {
-              // Get device details
-              const deviceDetails = getDeviceDetails();
-
-              // Prepare data for Web3Forms
-              const formData = {
-                access_key: "0fc5eb06-2f12-40f8-8a3d-086a4a3df247", // Replace with your Web3Forms access key
-                subject: "User IP and Device Details",
-                from_name: "WorkWithBorj",
-                from_email: "tracker@workwithborj.com", // Placeholder email
-                message: `User IP: ${data.ip}\n
-                                Browser: ${deviceDetails.browser}\n
-                                OS: ${deviceDetails.os}\n
-                                Screen Resolution: ${deviceDetails.screenResolution}\n
-                                User Agent: ${deviceDetails.userAgent}`,
-              };
-
-              // Send data to Web3Forms
-              fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-              })
-                .then((response) => response.json())
-                .then((result) => {
-                  if (result.success) {
-                    // alert("IP and device details sent to your email successfully!");
-                  } else {
-                    // alert("Failed to send details.");
-                  }
-                })
-                .catch((error) => {
-                  console.error("Error:", error);
-                });
-            });
-        });
-    </script>
-
     <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
@@ -642,6 +551,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <!-- custom js -->
-    <script src="js/port-projects.js"></script>
+    <script src="js/certificates.js"></script>
   </body>
 </html>
