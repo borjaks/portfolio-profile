@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico"
+    />
+    <link rel="stylesheet" href="css/guess-number.css" />
+    <title>Guess the Number!</title>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <button class="btn again">Restart</button>
+      <div class="drop-down">
+        <label>Difficulty Level</label>
+        <select id="leveldiff" onchange="checkDifficulty()">
+          <option value="1">Easy</option>
+          <option value="2">Medium</option>
+          <option value="3">Hard</option>
+          <option value="4">Hell</option>
+        </select>
+      </div>
+    </nav>
+    <header>
+      <section class="game-hero">
+        <h1>- Guess the Number! -</h1>
+        <p class="between">(Between 1 to 10)</p>
+        <p class="message">Start guessing...</p>
+      </section>
+      <div class="number">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <input type="number" class="guess" />
+        <button class="btn check">Submit</button>
+      </section>
+      <section class="right">
+        <p class="label-score">💯 Level Score: <span class="score">0</span></p>
+        <p class="label-highscore">
+          🥇 Highscore: <span class="highscore">0</span>
+        </p>
+      </section>
+    </main>
+    <!-- footer design -->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>Copyright &copy; <span id="year"></span> | All Rights Reserved.</p>
+      </div>
+
+      <div class="footer-iconTop">
+        <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+      </div>
+    </footer>
+
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+    <script src="js/guess-number.js"></script>
+  </body>
+</html>
