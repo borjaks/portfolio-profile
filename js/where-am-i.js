@@ -99,7 +99,9 @@ const whereAmI = async function () {
       console.log(statusMsg);
       renderStatus(statusMsg);
 
-      const img = await createImage("images/others.gif");
+      const img = await createImage(
+        "https://github.com/user-attachments/assets/f81a983f-0e60-4847-b7f7-5588ceae9a2c"
+      );
       currentImg = img;
       imgContainer.classList.remove("btn__hidden");
       console.log(`loading image rendered`);
