@@ -1,22 +1,22 @@
-'use strict';
+"use strict";
 
-const btn = document.querySelector('.btn-country');
-const btnReset = document.querySelector('.btn-reset');
-const countriesContainer = document.querySelector('.countries');
+const btn = document.querySelector(".btn-country");
+const btnReset = document.querySelector(".btn-reset");
+const countriesContainer = document.querySelector(".countries");
 
 let city, locality;
 let isRunning = false;
 
-const renderCountry = function (data, className = '') {
+const renderCountry = function (data, className = "") {
   //Currency Capitalization
   console.log(data);
-  const curr = data.currencies[0].name.split(' ');
+  const curr = data.currencies[0].name.split(" ");
   const currArr = [];
-  curr.map(c => {
+  curr.map((c) => {
     const capitalizedCurr = c[0].toUpperCase() + c.slice(1);
     currArr.push(capitalizedCurr);
   });
-  const currNew = currArr.join(' ');
+  const currNew = currArr.join(" ");
 
   const html = `
     <article class="country ${className}">
@@ -36,13 +36,25 @@ const renderCountry = function (data, className = '') {
            </div>
          </article>`;
 
-  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.insertAdjacentHTML("beforeend", html);
 };
 
 const renderError = function (msg) {
-  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.insertAdjacentText("beforeend", msg);
   isRunning = false;
-  btnReset.classList.toggle('btn__hidden');
+  btnReset.classList.toggle("btn__hidden");
+};
+
+const renderStatus = function (msg) {
+  countriesContainer.insertAdjacentText("beforeend", msg);
+  countriesContainer.style.opacity = 1;
+};
+
+const removeStatusText = function () {
+  // Check if the last child is a text node before removing
+  if (countriesContainer.lastChild?.nodeType === Node.TEXT_NODE) {
+    countriesContainer.removeChild(countriesContainer.lastChild);
+  }
 };
 
 const getPosition = function () {
@@ -54,8 +66,10 @@ const getPosition = function () {
 const whereAmI = async function () {
   if (!isRunning) {
     try {
-      btn.classList.toggle('btn__hidden');
-      console.log(`Fetching Current Location`);
+      btn.classList.toggle("btn__hidden");
+      const statusMsg = `Fetching Current Location`;
+      console.log(statusMsg);
+      renderStatus(statusMsg);
       const locator = `https://restcountries.com/v2/name/`;
 
       const pos = await getPosition();
@@ -82,7 +96,7 @@ const whereAmI = async function () {
 
       //Country Data
       const originalString = data.countryName;
-      const cleanedString = originalString.replace(/\s\(the\)/, '');
+      const cleanedString = originalString.replace(/\s\(the\)/, "");
 
       const res2 = await fetch(`${locator}${cleanedString}`);
 
@@ -91,10 +105,11 @@ const whereAmI = async function () {
       }
 
       const data2 = await res2.json();
-      renderCountry(data2[0], 'country');
+      renderCountry(data2[0], "country");
+      removeStatusText();
       countriesContainer.style.opacity = 1;
       isRunning = true;
-      btnReset.classList.toggle('btn__hidden');
+      btnReset.classList.toggle("btn__hidden");
     } catch (err) {
       console.error(`${err}`);
       renderError(`Something went wrong. ${err.message}`);
@@ -111,8 +126,8 @@ const resetWindow = function () {
 
 //Event Listener
 
-btn.addEventListener('click', whereAmI);
-btnReset.addEventListener('click', resetWindow);
+btn.addEventListener("click", whereAmI);
+btnReset.addEventListener("click", resetWindow);
 
 // const whereAmI = function (lat, lng) {
 //   const uri = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`;
