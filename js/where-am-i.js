@@ -110,8 +110,9 @@ const whereAmI = async function () {
       }
 
       const data2 = await res2.json();
-      renderCountry(data2[0], "country");
       removeStatusText();
+      renderCountry(data2[0], "country");
+
       countriesContainer.style.opacity = 1;
       isRunning = true;
       btnReset.classList.toggle("btn__hidden");
