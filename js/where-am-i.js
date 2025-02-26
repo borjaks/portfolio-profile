@@ -40,6 +40,11 @@ const renderCountry = function (data, className = "") {
 };
 
 const renderError = function (msg) {
+  // Check if the last child is a text node before removing
+  if (countriesContainer.lastChild?.nodeType === Node.TEXT_NODE) {
+    countriesContainer.removeChild(countriesContainer.lastChild);
+  }
+
   countriesContainer.insertAdjacentText("beforeend", msg);
   isRunning = false;
   btnReset.classList.toggle("btn__hidden");
