@@ -95,9 +95,6 @@ const whereAmI = async function () {
   if (!isRunning) {
     try {
       btn.classList.toggle("btn__hidden");
-      const statusMsg = `Fetching Current Location`;
-      console.log(statusMsg);
-      renderStatus(statusMsg);
 
       const img = await createImage(
         "https://github.com/user-attachments/assets/f81a983f-0e60-4847-b7f7-5588ceae9a2c"
@@ -105,6 +102,10 @@ const whereAmI = async function () {
       currentImg = img;
       imgContainer.classList.remove("btn__hidden");
       console.log(`loading image rendered`);
+
+      const statusMsg = `Fetching Current Location`;
+      console.log(statusMsg);
+      renderStatus(statusMsg);
 
       const locator = `https://restcountries.com/v2/name/`;
 
