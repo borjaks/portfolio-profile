@@ -116,7 +116,8 @@ body {
 
 .images img {
   display: block;
-  width: 40rem;
+  width: 80rem;
+  height: 60rem;
   margin: 4rem;
 }
 
@@ -129,4 +130,39 @@ body {
 
 .btn__hidden {
   display: none;
+}
+
+@media (max-width: 900px) {
+  .images img {
+    display: block;
+    width: 70rem;
+    height: 50rem;
+    margin: 4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .images img {
+    display: block;
+    width: 60rem;
+    height: 40rem;
+    margin: 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .images img {
+    display: block;
+    width: 50rem;
+    height: 30rem;
+    margin: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .images img {
+    display: block;
+    width: 40rem;
+    margin: 4rem;
+  }
 }
