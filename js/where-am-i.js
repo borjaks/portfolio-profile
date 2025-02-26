@@ -3,9 +3,32 @@
 const btn = document.querySelector(".btn-country");
 const btnReset = document.querySelector(".btn-reset");
 const countriesContainer = document.querySelector(".countries");
+const imgContainer = document.querySelector(".images");
 
 let city, locality;
 let isRunning = false;
+let currentImg;
+
+const wait = function (sec) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, sec * 1000);
+  });
+};
+
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement("img");
+    img.src = imgPath;
+    img.addEventListener("load", function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+
+    img.addEventListener("error", function () {
+      reject(new Error(`Error: Image Not Found!`));
+    });
+  });
+};
 
 const renderCountry = function (data, className = "") {
   //Currency Capitalization
@@ -75,6 +98,12 @@ const whereAmI = async function () {
       const statusMsg = `Fetching Current Location`;
       console.log(statusMsg);
       renderStatus(statusMsg);
+
+      const img = await createImage("images/others.gif");
+      currentImg = img;
+      imgContainer.classList.remove("btn__hidden");
+      console.log(`loading image rendered`);
+
       const locator = `https://restcountries.com/v2/name/`;
 
       const pos = await getPosition();
@@ -116,6 +145,7 @@ const whereAmI = async function () {
       countriesContainer.style.opacity = 1;
       isRunning = true;
       btnReset.classList.toggle("btn__hidden");
+      imgContainer.classList.add("btn__hidden");
     } catch (err) {
       console.error(`${err}`);
       renderError(`Something went wrong. ${err.message}`);
@@ -134,66 +164,3 @@ const resetWindow = function () {
 
 btn.addEventListener("click", whereAmI);
 btnReset.addEventListener("click", resetWindow);
-
-// const whereAmI = function (lat, lng) {
-//   const uri = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`;
-//   const locator = `https://restcountries.com/v2/name/`;
-
-//   getPosition()
-//     .then(res => {
-//       const { latitude: lat, longitude: lng } = res.coords;
-
-//       return fetch(uri);
-//     })
-//     .then(res => {
-//       console.log(res);
-
-//       if (!res.ok) {
-//         throw new Error(`Problem with Geocoding ${res.status}`);
-//       }
-
-//       return res.json();
-//     })
-//     .then(data => {
-//       console.log(data);
-//       if (!data.countryName && !data.city) {
-//         console.log(`Invalid Location Coordinates`);
-//         return;
-//       }
-//       city = data.city;
-//       locality = data.locality;
-//       console.log(`You are in ${data.city}, ${data.countryName}`);
-
-//       if (data.countryName.includes('(the)')) {
-//         const originalString = data.countryName;
-//         const cleanedString = originalString.replace(/\s\(the\)/, '');
-
-//         return fetch(`${locator}${cleanedString}`);
-//       }
-//       return fetch(`${locator}${data.countryName}`);
-//     })
-//     .then(res2 => {
-//       if (!res2.ok) {
-//         throw new Error(`Country not found! ${res2.status}`);
-//       }
-
-//       return res2.json();
-//     })
-//     .then(data2 => {
-//       renderCountry(data2[0], 'country');
-//     })
-//     .catch(err => {
-//       console.log(`Something went wrong: ${err.message}`);
-//     })
-//     .finally(() => {
-//       countriesContainer.style.opacity = 1;
-//     });
-// };
-
-// const getPosition = function () {
-//   return new Promise(function (resolve, reject) {
-//     navigator.geolocation.getCurrentPosition(resolve, reject);
-//   });
-// };
-
-// btn.addEventListener('click', whereAmI);

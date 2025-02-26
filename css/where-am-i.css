@@ -46,7 +46,7 @@ body {
 }
 
 .neighbour::before {
-  content: 'Neighbour country';
+  content: "Neighbour country";
   width: 100%;
   position: absolute;
   top: -4rem;
@@ -110,10 +110,6 @@ body {
   cursor: pointer;
 }
 
-.btn__hidden {
-  display: none;
-}
-
 .images {
   display: flex;
 }
@@ -129,4 +125,8 @@ body {
   margin: 2rem;
   border: 3rem solid white;
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.btn__hidden {
+  display: none;
 }
