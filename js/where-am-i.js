@@ -15,6 +15,14 @@ const wait = function (sec) {
   });
 };
 
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(() => {
+      reject(new Error(`Request took too long! Please try again.`));
+    }, sec);
+  });
+};
+
 const createImage = function (imgPath) {
   return new Promise(function (resolve, reject) {
     const img = document.createElement("img");
@@ -143,6 +151,7 @@ const whereAmI = async function () {
 
       const data2 = await res2.json();
       removeStatusText();
+
       renderCountry(data2[0], "country");
 
       countriesContainer.style.opacity = 1;
