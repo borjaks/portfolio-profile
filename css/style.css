@@ -423,35 +423,22 @@ span {
 
 .skills-slider {
   width: 100%;
-  max-width: 800px; /* Width for 6 icons (45px + 20px margin) * 6 */
+  max-width: 800px; /* Width for 10 icons */
   overflow: hidden;
   position: relative;
-  height: 55px;
+  height: 65px;
   margin-bottom: 2rem;
   border-radius: 8px;
   box-shadow: 0 0.1rem 0.5rem var(--shadow-color);
-  padding: 5px 0;
-  background: var(--main-color-rgb);
+  padding: 10px 0;
+  background: rgba(var(--main-color-rgb), 0.05);
 }
 
 .skills-track {
   display: flex;
   width: max-content;
-  animation: scroll 5s ease-in-out infinite alternate;
   padding: 0 10px;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-100% + 800px));
-  }
-}
-
-.skills-track:hover {
-  animation-play-state: paused;
+  animation: marquee 15s linear infinite;
 }
 
 .logo-icons {
@@ -465,6 +452,33 @@ span {
 
 .logo-icons:hover {
   transform: scale(1.2);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      -780px
+    ); /* Adjust based on total width of all icons */
+  }
+}
+
+.skills-track:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .skills-slider {
+    max-width: 585px; /* Width for 9 icons on tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-slider {
+    max-width: 390px; /* Width for 6 icons on mobile */
+  }
 }
 
 .container-icons {
@@ -1753,5 +1767,23 @@ img {
 @media (max-width: 480px) {
   .skills-slider {
     max-width: 350px; /* Width for 4 icons on smaller screens */
+  }
+}
+
+/* For very small screens, adjust the container further */
+@media (max-width: 360px) {
+  .skills-slider {
+    max-width: 260px; /* Width for 4 icons on very small mobile */
+  }
+
+  @keyframes scrollSkills {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(
+        calc(-780px + 260px)
+      ); /* Total width minus visible width */
+    }
   }
 }
