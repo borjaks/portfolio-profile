@@ -575,8 +575,8 @@ span {
 
 .btn-portfolio {
   margin-top: 2.5rem;
-  color: var(--text-color);
-  background: none;
+  color: var(--dark-color);
+  background: var(--white-color);
 }
 
 .btn-portfolio:hover {
