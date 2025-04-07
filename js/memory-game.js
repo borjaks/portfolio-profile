@@ -1,4 +1,3 @@
-
 var buttonColors = ["red", "blue", "green", "yellow"];
 
 var gamePattern = [];
@@ -9,6 +8,15 @@ var level = 0;
 var hints = 3;
 var score = 0;
 var topscore = 0;
+
+// Load the high score from localStorage when the game starts
+$(document).ready(function () {
+  // Check if high score exists in localStorage
+  if (localStorage.getItem("memoryGameHighScore")) {
+    topscore = parseInt(localStorage.getItem("memoryGameHighScore"));
+    $("#top-score").text("High Score: " + topscore);
+  }
+});
 
 //Disable and Make the Show Pattern Button Invisible on Initialization
 
@@ -22,12 +30,17 @@ welcome();
 function welcome() {
   if (!started) {
     let isWelcomeText = true; // Toggle between texts
+
     setInterval(function () {
       if (!started) {
         // Animate text change with easing
         $("#level-title")
           .fadeOut(500, function () {
-            $(this).text(isWelcomeText ? "[ Welcome to Memory Game ]" : "[ Press Any Key to Start ]");
+            $(this).text(
+              isWelcomeText
+                ? "[ Welcome to Memory Game ]"
+                : "[ Press Any Key to Start ]"
+            );
           })
           .fadeIn(500);
         isWelcomeText = !isWelcomeText; // Switch text on each interval
@@ -36,11 +49,10 @@ function welcome() {
   }
 }
 
-
 //Event Listeners
 
 //Start Game Event Listener (Keypress or Touch)
-$(document).on("keypress touchstart", function() {
+$(document).on("keypress touchstart", function () {
   if (!started) {
     $("#level-title").text("Level " + level);
     $("#score").text("Score: " + score); // Display initial score
@@ -50,39 +62,31 @@ $(document).on("keypress touchstart", function() {
 });
 
 //Show Pattern Button Click Event Listener
-$("#show-pattern").click(function() {
+$("#show-pattern").click(function () {
   if (!started) {
-
-  }
-  else {
-showPattern();
+  } else {
+    showPattern();
   }
 });
 
 //Game Button Click Event Listener
-$(".btn").click(function() {
+$(".btn").click(function () {
   if (!started) {
+  } else {
+    var userChosenColor = $(this).attr("id");
+    userClickedPattern.push(userChosenColor);
+
+    playSound(userChosenColor);
+    animatePress(userChosenColor);
+
+    checkAnswer(userClickedPattern.length - 1);
   }
-  else {
-  
-  var userChosenColor = $(this).attr("id");
-  userClickedPattern.push(userChosenColor);
-
-  playSound(userChosenColor);
-  animatePress(userChosenColor);
-
-  checkAnswer(userClickedPattern.length-1);
-  }
-
 });
-
-
-
 
 //New Game Level
 function nextSequence() {
   $("#show-pattern").prop("disabled", false);
-  $("#show-pattern").animate({ opacity: 1 }, 1200); 
+  $("#show-pattern").animate({ opacity: 1 }, 1200);
   $("#hints").text("Hints Left: " + hints);
 
   userClickedPattern = [];
@@ -96,15 +100,14 @@ function nextSequence() {
   animateGamePattern();
 
   $("#game-pattern").hide();
-
+  $("#show-pattern").show();
 }
 
 //Check and Compare User Pattern from Game Pattern
 function checkAnswer(currentLevel) {
-
   //Success Path
   if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-    if (userClickedPattern.length === gamePattern.length){
+    if (userClickedPattern.length === gamePattern.length) {
       score += level * 10; // Increment score based on the level
       $("#score").text("Score: " + score); // Update score display
       $("#hints").text("Hints Left: " + hints);
@@ -112,13 +115,14 @@ function checkAnswer(currentLevel) {
         nextSequence();
       }, 1000);
     }
-  } 
-  
+  }
+
   //Failed Path
   else {
     playSound("wrong");
     $("body").addClass("game-over");
     $("#level-title").text("[ Game Over! ]");
+    $("#game-pattern").hide();
 
     setTimeout(function () {
       $("body").removeClass("game-over");
@@ -128,14 +132,14 @@ function checkAnswer(currentLevel) {
   }
 }
 
-
 //Game Restart
 function startOver() {
-  if (score >= topscore){
+  if (score > topscore) {
     topscore = score;
+    // Save the new high score to localStorage
+    localStorage.setItem("memoryGameHighScore", topscore);
     resetGame();
-  }
-  else {
+  } else {
     resetGame();
   }
 }
@@ -149,18 +153,12 @@ function resetGame() {
   gamePattern = [];
   started = false;
 
-
   setTimeout(function () {
     $("#level-title").text("[ Press Any Key to Restart ]");
     $("#show-pattern").prop("disabled", true);
     $("#show-pattern").css("opacity", "0");
   }, 1000);
 }
-  
-  
-
-
-
 
 // Sequential Animation for the Game Pattern
 function animateGamePattern() {
@@ -191,25 +189,24 @@ function animatePress(currentColor) {
   }, 100);
 }
 
-
 //Play Sound file
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
 }
 
-
 function showPattern() {
   if (hints <= 0) {
     $("#game-pattern").text("Unable to Show Pattern! No More Hints Left!");
     $("#game-pattern").show();
-  }
-  else {
-  const patternString = gamePattern.join(" + ");
-  hints--;
-  $("#hints").text("Hints Left: " + hints);
-  $("#game-pattern").text(patternString);
-  $("#game-pattern").show();
-  $("#show-pattern").prop("disabled", true);
+    $("#show-pattern").hide();
+  } else {
+    const patternString = gamePattern.join(" + ");
+    hints--;
+    $("#hints").text("Hints Left: " + hints);
+    $("#game-pattern").text(patternString);
+    $("#game-pattern").show();
+    $("#show-pattern").prop("disabled", true);
+    $("#show-pattern").hide();
   }
 }

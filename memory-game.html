@@ -1,72 +1,177 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico"
+    />
+    <link rel="stylesheet" href="css/memory-game.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Press+Start+2P&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Memory Game</title>
-  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico">
-  <link rel="stylesheet" href="css/memory-game.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap" rel="stylesheet">
-</head>
+  <body>
+    <!-- SVG Definitions -->
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#2ecc71">
+            <animate
+              attributeName="stop-color"
+              values="#2ecc71; #e74c3c; #f1c40f; #3498db; #2ecc71"
+              dur="8s"
+              repeatCount="indefinite"
+            ></animate>
+          </stop>
+          <stop offset="100%" stop-color="#3498db">
+            <animate
+              attributeName="stop-color"
+              values="#3498db; #2ecc71; #e74c3c; #f1c40f; #3498db"
+              dur="8s"
+              repeatCount="indefinite"
+            ></animate>
+          </stop>
+        </linearGradient>
+      </defs>
+    </svg>
 
-<body>
-  
-    <div class="container">
-      <div class="row">
+    <div class="game-container">
+      <header>
+        <div class="logo-container">
+          <div class="logo-text">
+            <svg
+              class="logo-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <!-- Game tiles matching button colors -->
+              <g class="logo-svg-group">
+                <!-- Top left tile - Green -->
+                <rect
+                  class="logo-tile green-tile"
+                  x="2"
+                  y="2"
+                  width="8"
+                  height="8"
+                  rx="1"
+                />
+                <!-- Top right tile - Red -->
+                <rect
+                  class="logo-tile red-tile"
+                  x="14"
+                  y="2"
+                  width="8"
+                  height="8"
+                  rx="1"
+                />
+                <!-- Bottom left tile - Yellow -->
+                <rect
+                  class="logo-tile yellow-tile"
+                  x="2"
+                  y="14"
+                  width="8"
+                  height="8"
+                  rx="1"
+                />
+                <!-- Bottom right tile - Blue -->
+                <rect
+                  class="logo-tile blue-tile"
+                  x="14"
+                  y="14"
+                  width="8"
+                  height="8"
+                  rx="1"
+                />
+              </g>
+            </svg>
+            <span>Memory Game</span>
+          </div>
+        </div>
+        <div class="theme-toggle">
+          <i class="bx bx-sun"></i>
+          <div class="toggle-track">
+            <div class="toggle-thumb"></div>
+          </div>
+          <i class="bx bx-moon"></i>
+        </div>
+      </header>
 
-        <div type="button" id="green" class="btn green">
+      <div class="game-board">
+        <h2 id="level-title">[ Press Any Key to Start ]</h2>
 
+        <div class="container">
+          <div class="row">
+            <div type="button" id="green" class="btn green"></div>
+            <div type="button" id="red" class="btn red"></div>
+          </div>
+          <div class="row">
+            <div type="button" id="yellow" class="btn yellow"></div>
+            <div type="button" id="blue" class="btn blue"></div>
+          </div>
         </div>
 
-        <div type="button" id="red" class="btn red">
+        <div class="game-info">
+          <h2 id="game-pattern"></h2>
+          <button id="show-pattern">SHOW PATTERN</button>
+        </div>
 
+        <div class="score-container">
+          <div class="score-card">
+            <i class="bx bx-bulb"></i>
+            <h2 id="hints" class="score-item">Hints Left: 0</h2>
+          </div>
+
+          <div class="score-card">
+            <i class="bx bx-trophy"></i>
+            <h2 id="score" class="score-item">Score: 0</h2>
+          </div>
+
+          <div class="score-card">
+            <i class="bx bx-crown"></i>
+            <h2 id="top-score">High Score: 0</h2>
+          </div>
         </div>
       </div>
-      
-      <div class="row">
 
-        <div type="button" id="yellow" class="btn yellow">
-
-        </div>
-        <div type="button" id="blue" class="btn blue">
-
+      <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; <span id="year"></span> | All Rights Reserved.</p>
         </div>
 
-      </div>
-
-    </div>
-    <h2 id="game-pattern"></h2>
-    <h2 id="level-title">[ Press Any Key to Start ]</h2>
-    <button id="show-pattern">SHOW PATTERN</button>
-    <div class="score-container">
-      <h2 id="hints" class="score-item">Hints Left: 0</h2>
-      <h2 id="score" class="score-item">Score: 0</h2>
-      <h2 id="top-score">High Score: 0</h2>
-      
-    </div>
-
-        <!-- footer design -->
-        <footer class="footer">
-          <div class="footer-text">
-              <p>Copyright &copy; <span id="year"></span> | All Rights Reserved.</p>
-          </div>
-  
-          <div class="footer-iconTop">
-              <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-          </div>
+        <div class="footer-iconTop">
+          <a href="#"><i class="bx bx-up-arrow-alt"></i></a>
+        </div>
       </footer>
-  
-      <script>
-          const currentYear = new Date().getFullYear();
-          document.getElementById('year').textContent = currentYear;
-      </script>
+    </div>
 
-  
+    <script>
+      // Year for footer
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
 
+      // Theme toggle
+      const themeToggle = document.querySelector(".theme-toggle");
+      const body = document.body;
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/memory-game.js" charset="utf-8"></script>
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("light-mode");
+        themeToggle.classList.toggle("active");
+      });
+    </script>
 
-</body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/memory-game.js" charset="utf-8"></script>
+  </body>
 </html>
