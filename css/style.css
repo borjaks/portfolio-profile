@@ -17,6 +17,7 @@
   --main-color: royalblue;
   --main-color-rgb: 65, 105, 225;
   --white-color: #fdfdfd;
+  --dark-color: #333;
   --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -505,8 +506,8 @@ span {
 }
 
 .btn-certs {
-  color: var(--text-color);
-  background: none;
+  color: var(--dark-color);
+  background: var(--white-color);
 }
 
 .services {
