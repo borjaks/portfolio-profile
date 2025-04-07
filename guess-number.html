@@ -10,49 +10,92 @@
       href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico"
     />
     <link rel="stylesheet" href="css/guess-number.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <title>Guess the Number!</title>
   </head>
   <body>
     <nav class="top-nav">
-      <button class="btn again">Restart</button>
-      <div class="drop-down">
-        <label>Difficulty Level</label>
-        <select id="leveldiff" onchange="checkDifficulty()">
-          <option value="1">Easy</option>
-          <option value="2">Medium</option>
-          <option value="3">Hard</option>
-          <option value="4">Hell</option>
-        </select>
-      </div>
+      <div class="game-logo">Guess-THE-Number</div>
     </nav>
-    <header>
-      <section class="game-hero">
-        <h1>- Guess the Number! -</h1>
-        <p class="between">(Between 1 to 10)</p>
-        <p class="message">Start guessing...</p>
-      </section>
-      <div class="number">?</div>
-    </header>
-    <main>
-      <section class="left">
-        <input type="number" class="guess" />
-        <button class="btn check">Submit</button>
-      </section>
-      <section class="right">
-        <p class="label-score">💯 Level Score: <span class="score">0</span></p>
-        <p class="label-highscore">
-          🥇 Highscore: <span class="highscore">0</span>
-        </p>
-      </section>
-    </main>
-    <!-- footer design -->
-    <footer class="footer">
-      <div class="footer-text">
-        <p>Copyright &copy; <span id="year"></span> | All Rights Reserved.</p>
-      </div>
 
-      <div class="footer-iconTop">
-        <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+    <div class="game-controls-wrapper">
+      <div class="game-controls-toggle">
+        <p class="game-controls-toggle-text">Show Controls</p>
+        <button class="toggle-controls" aria-label="Toggle game controls">
+          <i class="bx bx-chevrons-up"></i>
+        </button>
+      </div>
+      <div class="game-controls">
+        <button class="btn again">RESTART</button>
+        <div class="difficulty-container">
+          <label for="leveldiff">Difficulty Level</label>
+          <select id="leveldiff" onchange="checkDifficulty()">
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+            <option value="4">Hell</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="container">
+        <section class="game-hero">
+          <h1 class="message">Start Guessing</h1>
+          <p class="between">(Between 1 to 10)</p>
+          <div class="number-container">
+            <div class="number">?</div>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <main>
+      <div class="game-container">
+        <div class="game-content">
+          <section class="left">
+            <div class="guess-form">
+              <input
+                type="number"
+                class="guess"
+                placeholder="?"
+                min="1"
+                max="25"
+              />
+              <button class="btn check">Submit</button>
+            </div>
+          </section>
+
+          <section class="right">
+            <div class="score-board">
+              <div class="label-score">
+                <span>Level Score</span>
+                <span class="score">0</span>
+              </div>
+              <div class="label-highscore">
+                <span>🏆 Highscore</span>
+                <span class="highscore">0</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- footer design -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-text">
+          <p>Copyright &copy; <span id="year"></span> | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+          <a href="#"><i class="bx bx-up-arrow-alt"></i></a>
+        </div>
       </div>
     </footer>
 
