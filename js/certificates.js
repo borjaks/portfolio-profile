@@ -9,7 +9,7 @@ menuIcon.onclick = () => {
 
 /*========== scroll sections active link ==========*/
 let sections = document.querySelectorAll("section");
-let navLinks = document.querySelectorAll("header nav a");
+let navLinks = document.querySelectorAll("header nav a:not(.dropdown a)");
 
 window.onscroll = () => {
   sections.forEach((sec) => {
@@ -17,6 +17,15 @@ window.onscroll = () => {
     let offset = sec.offsetTop - 150;
     let height = sec.offsetHeight;
     let id = sec.getAttribute("id");
+
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach((links) => {
+        links.classList.remove("active");
+        document
+          .querySelector("header nav a[href*=" + id + "]")
+          .classList.add("active");
+      });
+    }
   });
 
   /*========== sticky navbar ==========*/
@@ -47,7 +56,7 @@ var swiper = new Swiper(".mySwiper", {
 
 /*========== scroll reveal ==========*/
 ScrollReveal({
-  // reset: true,
+  reset: true,
   distance: "80px",
   duration: 2000,
   delay: 200,
@@ -62,3 +71,38 @@ ScrollReveal().reveal(".home-content h1, .about-img img", { origin: "left" });
 ScrollReveal().reveal(".home-content h3, .home-content p, .about-content", {
   origin: "right",
 });
+
+/*==================== toggle dropdown on mobile ====================*/
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  dropdowns.forEach((dropdown) => {
+    const dropdownLink = dropdown.querySelector("a");
+
+    dropdownLink.addEventListener("click", function (e) {
+      if (window.innerWidth <= 815) {
+        e.preventDefault();
+        dropdown.classList.toggle("active");
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (e) {
+    if (window.innerWidth <= 815) {
+      dropdowns.forEach((dropdown) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove("active");
+        }
+      });
+    }
+  });
+});
+
+/*==================== dark mode ====================*/
+let darkModeIcon = document.querySelector("#darkMode-icon-port");
+
+darkModeIcon.onclick = () => {
+  darkModeIcon.classList.toggle("bx-sun");
+  document.body.classList.toggle("dark-mode");
+};

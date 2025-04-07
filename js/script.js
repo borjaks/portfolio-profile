@@ -79,3 +79,30 @@ ScrollReveal().reveal(".home-content h1, .about-img img", { origin: "left" });
 ScrollReveal().reveal(".home-content h3, .home-content p, .about-content", {
   origin: "right",
 });
+
+// toggle dropdown on mobile
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  dropdowns.forEach((dropdown) => {
+    const dropdownLink = dropdown.querySelector("a");
+
+    dropdownLink.addEventListener("click", function (e) {
+      if (window.innerWidth <= 815) {
+        e.preventDefault();
+        dropdown.classList.toggle("active");
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (e) {
+    if (window.innerWidth <= 815) {
+      dropdowns.forEach((dropdown) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove("active");
+        }
+      });
+    }
+  });
+});
