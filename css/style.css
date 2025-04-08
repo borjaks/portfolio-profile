@@ -433,14 +433,15 @@ span {
 
 .services .services-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   justify-content: center;
+  align-items: stretch;
 }
 
 .services-container .services-box {
   background: var(--bg-color);
-  padding: 3rem 2rem 4rem;
+  padding: 3rem 2rem;
   border-radius: 2rem;
   box-shadow: 0 0.1rem 0.5rem var(--shadow-color);
   text-align: center;
@@ -450,41 +451,50 @@ span {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.services-container .services-box:hover {
-  box-shadow: 0 0.1rem 2rem var(--shadow-color);
-  transform: scale(1.02);
+.service-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  justify-content: space-around;
 }
 
-.services-box i {
+.service-content i {
   font-size: 7rem;
   color: var(--main-color);
   margin-bottom: 1rem;
 }
 
-.services-box h3 {
+.service-content h3 {
   font-size: 2.6rem;
   transition: 0.5s ease;
-  margin-bottom: 1rem;
-  flex-shrink: 0;
+  margin-bottom: 1.5rem;
 }
 
-.services-box p {
+.service-content p {
   font-size: 1.6rem;
-  margin: 1rem 0;
-  flex-grow: 0.47;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tools-platform {
-  margin-top: 0.8rem;
-  flex-shrink: 0;
+  flex-grow: 1;
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--main-color-rgb), 0.1);
 }
 
 .tools-platform h4 {
   font-size: 1.6rem;
   color: var(--main-color);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
 .tool-list {
@@ -516,30 +526,25 @@ span {
   }
 
   .services-container .services-box {
-    padding: 2rem;
-  }
-  .services-box h3 {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
+    padding: 2.5rem 2rem;
   }
 
-  .services-box p {
+  .service-content h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-content p {
     font-size: 1.4rem;
-    margin: 0.8rem 0;
+  }
+
+  .tools-platform {
+    padding-top: 1.5rem;
   }
 
   .tools-platform h4 {
     font-size: 1.4rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .tool-list {
-    gap: 0.6rem;
-  }
-
-  .tool-list span {
-    font-size: 1.1rem;
-    padding: 0.3rem 0.8rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -549,23 +554,24 @@ span {
   }
 
   .services-container .services-box {
-    padding: 1.8rem;
-  }
-  .services-box h3 {
-    font-size: 2rem;
+    padding: 2rem 1.8rem;
   }
 
-  .services-box p {
+  .service-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-content p {
     font-size: 1.3rem;
+  }
+
+  .tools-platform {
+    padding-top: 1.2rem;
   }
 
   .tools-platform h4 {
     font-size: 1.3rem;
-  }
-
-  .tool-list span {
-    font-size: 1rem;
-    padding: 0.3rem 0.7rem;
   }
 }
 
