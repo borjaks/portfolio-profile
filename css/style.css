@@ -1533,7 +1533,7 @@ span {
     right: 0;
     transform: rotate(90deg) translate(-50%, 50%) scaleY(3);
     border-width: 23.9rem;
-    margin-top: 50px;
+    margin-top: 80px;
   }
 
   .home-img img {
@@ -1689,10 +1689,11 @@ span {
   }
 }
 @media (max-width: 415px) {
-  .btn-cv,
+  .btn .btn-cv,
   .btn-portfolio {
     font-size: 9px;
   }
+
   .home-content .social-media {
     height: 70px;
   }
@@ -1724,6 +1725,11 @@ span {
     width: 35px;
     height: 35px;
     border-radius: 0;
+  }
+
+  .home .profession-container .overlay {
+    top: 70rem;
+    margin-top: 40px;
   }
 }
 
