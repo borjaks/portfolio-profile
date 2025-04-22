@@ -1689,7 +1689,8 @@ span {
   }
 }
 @media (max-width: 415px) {
-  .btn .btn-cv,
+  .btn,
+  .btn-cv,
   .btn-portfolio {
     font-size: 9px;
   }
