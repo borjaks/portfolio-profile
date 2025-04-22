@@ -602,7 +602,7 @@ span {
   display: flex;
   width: max-content;
   padding: 0 10px;
-  animation: marquee 15s linear infinite;
+  animation: marquee 8s linear infinite alternate;
 }
 
 .logo-icons {
@@ -624,7 +624,29 @@ span {
   }
   100% {
     transform: translateX(
-      -780px
+      -590px
+    ); /* Adjust based on total width of all icons */
+  }
+}
+
+@keyframes marquee-md {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      -680px
+    ); /* Adjust based on total width of all icons */
+  }
+}
+
+@keyframes marquee-sm {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      -940px
     ); /* Adjust based on total width of all icons */
   }
 }
@@ -1583,6 +1605,10 @@ span {
     height: 35px;
     border-radius: 0;
   }
+
+  .skills-track {
+    animation: marquee-md 10s linear infinite alternate;
+  }
 }
 @media (max-width: 580px) {
   .portfolio .portfolio-container {
@@ -1656,6 +1682,10 @@ span {
     width: 40px;
     height: 40px;
     border-radius: 0;
+  }
+
+  .skills-track {
+    animation: marquee-sm 12s linear infinite alternate;
   }
 }
 @media (max-width: 415px) {
