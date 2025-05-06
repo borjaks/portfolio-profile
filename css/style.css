@@ -17,6 +17,11 @@
   border: none;
   text-align: left;
 }
+.faq-comparison-table th:first-child,
+.faq-comparison-table td:first-child {
+  width: auto;
+  white-space: nowrap;
+}
 .faq-comparison-table thead th {
   background: rgba(var(--main-color-rgb), 0.09);
   color: var(--main-color);
@@ -86,7 +91,7 @@
   .faq-comparison-table th, .faq-comparison-table td {
     min-width: 0;
     padding: 0.7em 0.5em;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     white-space: normal;
     word-break: break-word;
   }
