@@ -2214,15 +2214,6 @@ img {
   display: none;
 }
 
-.faq-item summary::after {
-  content: '\25BC';
-  position: absolute;
-  right: 2.5rem;
-  font-size: 1.6rem;
-  color: var(--main-color);
-  transition: transform 0.3s;
-}
-
 .faq-item[open] summary::after {
   transform: rotate(-180deg);
 }
