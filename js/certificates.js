@@ -102,6 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
 /*==================== dark mode ====================*/
 let darkModeIcon = document.querySelector("#darkMode-icon-port");
 
+// Default to dark mode on load
+if (!document.body.classList.contains("dark-mode")) {
+  document.body.classList.add("dark-mode");
+  darkModeIcon.classList.add("bx-sun");
+}
+
 darkModeIcon.onclick = () => {
   darkModeIcon.classList.toggle("bx-sun");
   document.body.classList.toggle("dark-mode");
