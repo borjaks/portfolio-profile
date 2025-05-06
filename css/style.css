@@ -1,5 +1,102 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
+/* FAQ Comparison Table Styles */
+.faq-comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  background: var(--bg-color);
+  box-shadow: 0 2px 12px var(--shadow-color);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 1.5rem;
+}
+.faq-comparison-table th, .faq-comparison-table td {
+  padding: 1.1em 1em;
+  border: none;
+  text-align: left;
+}
+.faq-comparison-table thead th {
+  background: rgba(var(--main-color-rgb), 0.09);
+  color: var(--main-color);
+  font-weight: 600;
+}
+.faq-comparison-table tbody tr:nth-child(even) {
+  background: #f6f8fa;
+}
+.faq-comparison-table tbody tr:nth-child(odd) {
+  background: var(--white-color);
+}
+.dark-mode .faq-comparison-table thead th {
+  background: rgba(var(--main-color-rgb), 0.18);
+  color: var(--main-color);
+}
+.dark-mode .faq-comparison-table tbody tr:nth-child(even) {
+  background: #181c2a;
+}
+.dark-mode .faq-comparison-table tbody tr:nth-child(odd) {
+  background: #23263a;
+}
+.faq-comparison-table th:first-child, .faq-comparison-table td:first-child {
+  border-left: none;
+}
+.faq-comparison-table th:last-child, .faq-comparison-table td:last-child {
+  border-right: none;
+}
+.faq-comparison-table tr:last-child td {
+  border-bottom: none;
+}
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+.table-responsive:after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 24px;
+  pointer-events: none;
+  background: linear-gradient(to left, var(--bg-color) 80%, transparent);
+  z-index: 1;
+  display: none;
+}
+@media (max-width: 700px) {
+  .faq-comparison-table {
+    width: 100%;
+    min-width: 0;
+    font-size: 1.3rem;
+    border-radius: 12px;
+    background: var(--bg-color);
+    box-shadow: 0 2px 12px var(--shadow-color);
+    display: table;
+    table-layout: auto;
+    word-break: break-word;
+  }
+  .table-responsive {
+    margin: 0;
+    overflow-x: unset;
+    -webkit-overflow-scrolling: unset;
+  }
+  .faq-comparison-table th, .faq-comparison-table td {
+    min-width: 0;
+    padding: 0.7em 0.5em;
+    font-size: 1.3rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .table-responsive:after {
+    display: none;
+  }
+}
+
+
+
 * {
   margin: 0;
   padding: 0;
