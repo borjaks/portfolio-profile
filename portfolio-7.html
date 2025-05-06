@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <script>document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('dark-mode');});</script>
+    <link rel="preload" as="image" href="images/logo.png">
     <title>My Portfolio</title>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -391,11 +392,18 @@ document.addEventListener('touchend', handleMouseUp)
     <script src="js/portfolio.js"></script>
 
   <script>
-    window.addEventListener('load', function() {
-      document.getElementById('loader').classList.add('hidden');
-      setTimeout(function() {
-        document.getElementById('loader').style.display = 'none';
-      }, 400);
+    function hideLoader() {
+      var loader = document.getElementById('loader');
+      if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(function() {
+          loader.style.display = 'none';
+        }, 400);
+      }
+    }
+    window.addEventListener('load', hideLoader);
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(hideLoader, 2000); // fallback: hide loader after 2s if DOM is ready
     });
   </script>
 </body>
