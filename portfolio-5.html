@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <script>document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('dark-mode');});</script>
     <title>My Portfolio</title>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -14,9 +15,38 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   
     <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/portfolio.css">
+    <style>
+      #loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #loader img {
+        width: 100px;
+        animation: spin 2s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
 </head>
-<body>
+  <body>
+    <div id="loader">
+      <img src="images/logo.png" alt="Loading..." />
+    </div>
   
    <!-- header design -->
    <header class="header">
@@ -302,5 +332,13 @@ document.addEventListener('touchend', handleMouseUp)
     <!-- custom js -->
     <script src="js/portfolio.js"></script>
 
+  <script>
+    window.addEventListener('load', function() {
+      document.getElementById('loader').classList.add('hidden');
+      setTimeout(function() {
+        document.getElementById('loader').style.display = 'none';
+      }, 400);
+    });
+  </script>
 </body>
 </html>

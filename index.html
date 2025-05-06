@@ -44,6 +44,9 @@
   </head>
 
   <body>
+    <div id="loader">
+      <img src="images/logo.png" alt="Loading..." />
+    </div>
     <!-- header design -->
     <header class="header">
       <a href="#" class="logo"
@@ -1221,5 +1224,13 @@
         document.body.classList.add('dark-mode');
       });
     </script>
-  </body>
+    <script>
+    window.addEventListener('load', function() {
+      document.getElementById('loader').classList.add('hidden');
+      setTimeout(function() {
+        document.getElementById('loader').style.display = 'none';
+      }, 400); // matches transition duration
+    });
+  </script>
+</body>
 </html>
