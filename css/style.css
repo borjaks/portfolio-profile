@@ -3,7 +3,10 @@
 /* Loader Styles */
 #loader {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: var(--bg-color, #fff);
   z-index: 9999;
   display: flex;
@@ -17,15 +20,18 @@
   animation: spin 1s linear infinite;
 }
 @keyframes spin {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 #loader.hidden {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s;
 }
-
 
 /* FAQ Comparison Table Styles */
 .faq-comparison-table {
@@ -39,7 +45,8 @@
   overflow: hidden;
   font-size: 1.5rem;
 }
-.faq-comparison-table th, .faq-comparison-table td {
+.faq-comparison-table th,
+.faq-comparison-table td {
   padding: 1.1em 1em;
   border: none;
   text-align: left;
@@ -70,10 +77,12 @@
 .dark-mode .faq-comparison-table tbody tr:nth-child(odd) {
   background: #23263a;
 }
-.faq-comparison-table th:first-child, .faq-comparison-table td:first-child {
+.faq-comparison-table th:first-child,
+.faq-comparison-table td:first-child {
   border-left: none;
 }
-.faq-comparison-table th:last-child, .faq-comparison-table td:last-child {
+.faq-comparison-table th:last-child,
+.faq-comparison-table td:last-child {
   border-right: none;
 }
 .faq-comparison-table tr:last-child td {
@@ -89,9 +98,11 @@
   height: 8px;
 }
 .table-responsive:after {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0; right: 0; bottom: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   width: 24px;
   pointer-events: none;
   background: linear-gradient(to left, var(--bg-color) 80%, transparent);
@@ -115,7 +126,8 @@
     overflow-x: unset;
     -webkit-overflow-scrolling: unset;
   }
-  .faq-comparison-table th, .faq-comparison-table td {
+  .faq-comparison-table th,
+  .faq-comparison-table td {
     min-width: 0;
     padding: 0.7em 0.5em;
     font-size: 1.1rem;
@@ -126,8 +138,6 @@
     display: none;
   }
 }
-
-
 
 * {
   margin: 0;
@@ -662,14 +672,14 @@ span {
   padding: 0.37em 1.1em;
   font-size: 1em;
   font-weight: 500;
-  box-shadow: 0 1px 5px rgba(44,40,70,0.10);
+  box-shadow: 0 1px 5px rgba(44, 40, 70, 0.1);
   border: 1px solid #2d2846;
   transition: background 0.18s, color 0.18s, box-shadow 0.18s;
 }
 .portfolio-box .tool-list span:hover {
   background: var(--main-color);
   color: #18142a;
-  box-shadow: 0 2px 10px rgba(65,105,225,0.12);
+  box-shadow: 0 2px 10px rgba(65, 105, 225, 0.12);
 }
 
 .tool-list span {
@@ -926,7 +936,7 @@ span {
 
 .portfolio-container .portfolio-box:hover {
   transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-box img {
@@ -2022,14 +2032,16 @@ img {
   margin-top: 12px;
   align-items: center;
 }
-.tech-icons i, .tech-icons .elementor-icon {
+.tech-icons i,
+.tech-icons .elementor-icon {
   font-size: 1.3em;
   color: #fff;
   opacity: 0.85;
   transition: transform 0.2s, opacity 0.2s;
   cursor: pointer;
 }
-.tech-icons i:hover, .tech-icons .elementor-icon:hover {
+.tech-icons i:hover,
+.tech-icons .elementor-icon:hover {
   opacity: 1;
   transform: scale(1.15);
 }
@@ -2044,7 +2056,7 @@ img {
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
-  box-shadow: 0 1px 4px rgba(146,0,59,0.2);
+  box-shadow: 0 1px 4px rgba(146, 0, 59, 0.2);
   letter-spacing: 0.02em;
 }
 
@@ -2055,14 +2067,16 @@ img {
   gap: 12px;
   margin-top: 14px;
 }
-.tech-icons i, .tech-icons .elementor-icon {
+.tech-icons i,
+.tech-icons .elementor-icon {
   font-size: 1.45em;
   color: #fff;
   opacity: 0.88;
   transition: transform 0.18s, opacity 0.18s;
   cursor: pointer;
 }
-.tech-icons i:hover, .tech-icons .elementor-icon:hover {
+.tech-icons i:hover,
+.tech-icons .elementor-icon:hover {
   opacity: 1;
   transform: scale(1.13);
 }
@@ -2077,7 +2091,7 @@ img {
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
-  box-shadow: 0 1px 4px rgba(146,0,59,0.13);
+  box-shadow: 0 1px 4px rgba(146, 0, 59, 0.13);
   letter-spacing: 0.02em;
 }
 /* Dropdown Menu Styles */
@@ -2182,7 +2196,6 @@ img {
   .skills-slider {
     max-width: 260px; /* Width for 4 icons on very small mobile */
   }
-
 }
 
 /* FAQ Section Styles */
@@ -2192,7 +2205,6 @@ img {
   max-width: 900px;
   margin: 0 auto 4rem auto;
   border-radius: 2rem;
-  
 }
 
 .faq-section .heading {
@@ -2225,7 +2237,11 @@ img {
   font-weight: 600;
   color: var(--main-color);
   padding: 2rem 2.5rem 2rem 2.5rem;
-  background: linear-gradient(90deg, rgba(var(--main-color-rgb), 0.08) 0%, rgba(var(--main-color-rgb), 0.02) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--main-color-rgb), 0.08) 0%,
+    rgba(var(--main-color-rgb), 0.02) 100%
+  );
   border-bottom: 1px solid #eee;
   position: relative;
   outline: none;
@@ -2234,7 +2250,11 @@ img {
 
 .faq-item summary:hover,
 .faq-item summary:focus {
-  background: linear-gradient(90deg, rgba(var(--main-color-rgb), 0.15) 0%, rgba(var(--main-color-rgb), 0.05) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--main-color-rgb), 0.15) 0%,
+    rgba(var(--main-color-rgb), 0.05) 100%
+  );
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -2284,27 +2304,35 @@ img {
 
 .dark-mode .faq-section {
   background: #18142a;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
 }
 
 .dark-mode .faq-item {
   background: #231f3a;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 .dark-mode .faq-item[open] {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
 }
 
 .dark-mode .faq-item summary {
   color: var(--main-color);
-  background: linear-gradient(90deg, rgba(65,105,225,0.12) 0%, rgba(65,105,225,0.04) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(65, 105, 225, 0.12) 0%,
+    rgba(65, 105, 225, 0.04) 100%
+  );
   border-bottom: 1px solid #2d2846;
 }
 
 .dark-mode .faq-item summary:hover,
 .dark-mode .faq-item summary:focus {
-  background: linear-gradient(90deg, rgba(65,105,225,0.22) 0%, rgba(65,105,225,0.09) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(65, 105, 225, 0.22) 0%,
+    rgba(65, 105, 225, 0.09) 100%
+  );
 }
 
 .dark-mode .faq-item p,
@@ -2318,7 +2346,6 @@ img {
 .dark-mode .faq-item ol li::marker {
   color: var(--main-color);
 }
-
 
 body.dark-mode button:disabled,
 body.dark-mode button[disabled] {
@@ -2340,8 +2367,8 @@ body.dark-mode /* removed pagination-container styles */ button:focus {
   outline: 2px solid #fff;
 }
 
-
-/* removed pagination-container styles */ button {
+/* removed pagination-container styles */
+button {
   background: var(--main-color);
   color: #fff;
   border: none;
@@ -2352,17 +2379,19 @@ body.dark-mode /* removed pagination-container styles */ button:focus {
   font-size: 1.1em;
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: background 0.2s, color 0.2s, transform 0.15s;
 }
-/* removed pagination-container styles */ button.active,
+/* removed pagination-container styles */
+button.active,
 /* removed pagination-container styles */ button:hover:not(:disabled) {
   background: #fff;
   color: var(--main-color);
   border: 1.5px solid var(--main-color);
   transform: translateY(-2px) scale(1.06);
 }
-/* removed pagination-container styles */ button:disabled {
+/* removed pagination-container styles */
+button:disabled {
   background: #c9c9c9;
   color: #fff;
   cursor: not-allowed;
@@ -2393,7 +2422,6 @@ body.dark-mode /* removed pagination-container styles */ button:focus {
     padding-left: 1.2rem;
     padding-right: 1.2rem;
   }
-
 
   @keyframes scrollSkills {
     0% {

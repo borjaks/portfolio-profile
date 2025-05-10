@@ -51,16 +51,16 @@
     </div>
     <script>
       function hideLoader() {
-        var loader = document.getElementById('loader');
+        var loader = document.getElementById("loader");
         if (loader) {
-          loader.classList.add('hidden');
-          setTimeout(function() {
-            loader.style.display = 'none';
+          loader.classList.add("hidden");
+          setTimeout(function () {
+            loader.style.display = "none";
           }, 400);
         }
       }
-      window.addEventListener('load', hideLoader);
-      document.addEventListener('DOMContentLoaded', function () {
+      window.addEventListener("load", hideLoader);
+      document.addEventListener("DOMContentLoaded", function () {
         setTimeout(hideLoader, 2000);
       });
     </script>
@@ -110,10 +110,36 @@
     <section class="portfolio" id="portfolio">
       <h2 class="heading">My <span>Projects</span></h2>
       <div class="portfolio-container">
-        
+        <div class="portfolio-box">
+          <img src="images/Oromelo.png" alt="" />
+          <div class="tool-list" style="margin-top: 14px">
+            <span>React</span>
+            <span>React Router</span>
+            <span>Tailwind CSS</span>
+            <span>Supabase</span>
+            <span>Google Auth</span>
+            <span>API Integration</span>
+            <span>Email Integration</span>
+          </div>
+          <div class="portfolio-layer">
+            <h4>Gold Pawn Web App</h4>
+            <p>
+              A modern full-stack web application for managing gold
+              transactions. Built with React, Tailwind CSS, and Supabase. The
+              platform allows users to sell or pawn their gold items with secure
+              authentication, while admin capabilities provide comprehensive
+              transaction management, real-time monitoring, and user profile
+              management.
+            </p>
+            <a href="https://oromelo.ph" target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+
         <div class="portfolio-box">
           <img src="images/Yellow Cart.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>React</span>
             <span>Redux</span>
             <span>Tailwind CSS</span>
@@ -137,7 +163,7 @@
 
         <div class="portfolio-box">
           <img src="images/Hotel-de-Borj.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>React</span>
             <span>React Router</span>
             <span>Tailwind CSS</span>
@@ -146,7 +172,11 @@
           <div class="portfolio-layer">
             <h4>Hotel Booking Web App</h4>
             <p>
-              A modern hotel booking web app that simulates a full hotel reservation experience — built to explore advanced React patterns, third-party API integrations, and real-world booking features. Developed using React, React Context API, React Router, Tailwind CSS, and Leaflet.
+              A modern hotel booking web app that simulates a full hotel
+              reservation experience — built to explore advanced React patterns,
+              third-party API integrations, and real-world booking features.
+              Developed using React, React Context API, React Router, Tailwind
+              CSS, and Leaflet.
             </p>
             <a href="https://hotel-de-borj.netlify.app/" target="_blank"
               ><i class="bx bx-link-external"></i
@@ -156,7 +186,7 @@
 
         <div class="portfolio-box">
           <img src="images/Undead-Cipher.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>React</span>
             <span>Vanilla CSS</span>
             <span>Vanilla JS</span>
@@ -177,7 +207,7 @@
 
         <div class="portfolio-box">
           <img src="images/SoleTouched Web Dev.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>WordPress</span>
             <span>Elementor</span>
             <span>CSS</span>
@@ -197,7 +227,7 @@
 
         <div class="portfolio-box">
           <img src="images/SoleTouchedUI.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>Figma</span>
             <span>UI Animation</span>
             <span>Prototyping</span>
@@ -215,7 +245,7 @@
 
         <div class="portfolio-box">
           <img src="images/xo-collection.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>HTML</span>
             <span>Vanilla CSS</span>
           </div>
@@ -236,7 +266,7 @@
             src="https://github.com/user-attachments/assets/56b4860b-a845-4fdc-b5a2-1a98bab2a97f"
             alt=""
           />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>React</span>
             <span>AI Integration</span>
             <span>Vanilla CSS</span>
@@ -256,11 +286,11 @@
 
         <div class="portfolio-box">
           <img src="images/website.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>HTML</span>
             <span>Vanilla CSS</span>
             <span>Vanilla JS</span>
-          </div>  
+          </div>
           <div class="portfolio-layer">
             <h4>Website Development</h4>
             <p>
@@ -278,11 +308,11 @@
             src="https://github.com/user-attachments/assets/a2855fe0-852a-4930-97aa-a928a52bff90"
             alt=""
           />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>HTML</span>
             <span>Vanilla CSS</span>
             <span>Vanilla JS</span>
-          </div> 
+          </div>
           <div class="portfolio-layer">
             <h4>Guess the Number Game</h4>
             <p>
@@ -300,12 +330,12 @@
             src="https://github.com/user-attachments/assets/7e1b839c-360b-40eb-b90e-bf81b1b4aa8e"
             alt=""
           />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>HTML</span>
             <span>Vanilla CSS</span>
             <span>Vanilla JS</span>
             <span>JQuery</span>
-          </div> 
+          </div>
           <div class="portfolio-layer">
             <h4>Memory Game</h4>
             <p>
@@ -321,11 +351,11 @@
             src="https://github.com/user-attachments/assets/54ce51d1-4554-432c-93fe-a96d81a1f91f"
             alt=""
           />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>HTML</span>
             <span>Vanilla CSS</span>
             <span>Vanilla JS</span>
-          </div> 
+          </div>
           <div class="portfolio-layer">
             <h4>Dice Game</h4>
             <p>
@@ -341,10 +371,10 @@
             src="https://github.com/user-attachments/assets/30ee6c29-14c3-48c2-9c5e-f942df8a8fe3"
             alt=""
           />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>HTML</span>
             <span>Vanilla CSS</span>
-          </div> 
+          </div>
           <div class="portfolio-layer">
             <h4>Coffee Machine Website Preloader</h4>
             <p>
@@ -357,10 +387,10 @@
 
         <div class="portfolio-box">
           <img src="images/website-wp.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>WordPress</span>
             <span>Elementor</span>
-          </div> 
+          </div>
           <div class="portfolio-layer">
             <h4>Wordpress Site Development</h4>
             <p>
@@ -375,7 +405,7 @@
 
         <div class="portfolio-box">
           <img src="images/hifi.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>Figma</span>
             <span>Prototyping</span>
           </div>
@@ -392,7 +422,7 @@
 
         <div class="portfolio-box">
           <img src="images/dashboards.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>PowerBI</span>
             <span>PowerQuery</span>
           </div>
@@ -410,7 +440,7 @@
 
         <div class="portfolio-box">
           <img src="images/automation.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>Zoho CRM</span>
           </div>
           <div class="portfolio-layer">
@@ -424,11 +454,9 @@
           </div>
         </div>
 
-       
-        
         <div class="portfolio-box">
           <img src="images/Zapier Automations.png" alt="" />
-          <div class="tool-list" style="margin-top:14px;">
+          <div class="tool-list" style="margin-top: 14px">
             <span>Zapier</span>
             <span>Zapier Canvas</span>
           </div>
@@ -451,7 +479,6 @@
                 </div>
             </div> -->
       </div>
-      
     </section>
 
     <div class="floating_btn">
@@ -495,18 +522,18 @@
     <script src="js/port-projects.js"></script>
     <script>
       // Set dark mode as default on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        document.body.classList.add('dark-mode');
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("dark-mode");
       });
     </script>
-    
+
     <script>
-    window.addEventListener('load', function() {
-      document.getElementById('loader').classList.add('hidden');
-      setTimeout(function() {
-        document.getElementById('loader').style.display = 'none';
-      }, 400);
-    });
-  </script>
-</body>
+      window.addEventListener("load", function () {
+        document.getElementById("loader").classList.add("hidden");
+        setTimeout(function () {
+          document.getElementById("loader").style.display = "none";
+        }, 400);
+      });
+    </script>
+  </body>
 </html>
