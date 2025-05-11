@@ -16,6 +16,7 @@ ready(function() {
     <div class="lightbox-overlay">
       <div class="lightbox-container">
         <img class="lightbox-image" src="" alt="Full-size image">
+        <div class="lightbox-title"></div>
         <button class="lightbox-close">&times;</button>
       </div>
     </div>
@@ -27,12 +28,22 @@ ready(function() {
   // Get references to lightbox elements
   const lightbox = document.querySelector('.lightbox-overlay');
   const lightboxImg = document.querySelector('.lightbox-image');
+  const lightboxTitle = document.querySelector('.lightbox-title');
   const closeBtn = document.querySelector('.lightbox-close');
   
   // Function to open the lightbox with a specific image
-  function openLightbox(imgSrc) {
+  function openLightbox(imgSrc, title) {
     console.log('Opening lightbox with image:', imgSrc);
     lightboxImg.src = imgSrc;
+    
+    // Set the title if provided
+    if (title && lightboxTitle) {
+      lightboxTitle.textContent = title;
+      lightboxTitle.style.display = 'block';
+    } else if (lightboxTitle) {
+      lightboxTitle.style.display = 'none';
+    }
+    
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden'; // Prevent scrolling
   }
@@ -46,7 +57,15 @@ ready(function() {
     img.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      openLightbox(this.src);
+      
+      // Get the title from the parent grid-box's data-title attribute
+      let title = '';
+      const gridBox = this.closest('.grid-box');
+      if (gridBox && gridBox.hasAttribute('data-title')) {
+        title = gridBox.getAttribute('data-title');
+      }
+      
+      openLightbox(this.src, title);
     });
   });
   
@@ -252,7 +271,14 @@ ready(function() {
       
       // Add click handler to open lightbox
       thumbnail.addEventListener('click', function() {
-        openLightbox(img.src);
+        // Get the title from the parent carousel-item's data-title attribute
+        let title = '';
+        const carouselItem = img.closest('.carousel-item');
+        if (carouselItem && carouselItem.hasAttribute('data-title')) {
+          title = carouselItem.getAttribute('data-title');
+        }
+        
+        openLightbox(img.src, title);
       });
       
       // Add thumbnail to container
@@ -313,6 +339,21 @@ const cssStyles = `
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .lightbox-title {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    z-index: 10;
+    opacity: 0.9;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
   }
   
   .lightbox-overlay.active {
