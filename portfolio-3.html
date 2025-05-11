@@ -18,6 +18,8 @@
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/hover-overlay.css">
+    <link rel="stylesheet" href="css/caption-titles.css">
 </head>
   <body>
     <div id="loader">
@@ -47,101 +49,115 @@
     <!-- <a href="#" class="logo"><img src="./images/favicon.ico" alt="logo" class="sitelogo">workwithborj</a> -->
     
     <div class="carousel" id="carousel-container">
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="HiFi Mobile Wireframes">
             <div class="carousel-box">
-                <div class="title">HiFi Mobile Wireframes</div>
+                <div class="title"></div>
                 <img src="images/3/img1.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Home Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Home Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img2.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Features Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Features Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img3.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Reviews Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Reviews Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img4.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Products Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Products Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img5.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Specifications Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Specifications Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img6.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Cart Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Cart Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img7.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Checkout Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Checkout Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img8.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Interactive Fields">
             <div class="carousel-box">
-                <div class="title">Interactive Fields</div>
+                <div class="title"></div>
                 <img src="images/3/img9.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Interactive Components">
             <div class="carousel-box">
-                <div class="title">Interactive Components</div>
+                <div class="title"></div>
                 <img src="images/3/img10.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Menu Overlay">
             <div class="carousel-box">
-                <div class="title">Menu Overlay</div>
+                <div class="title"></div>
                 <img src="images/3/img11.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Chat Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Chat Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img12.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Account Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Account Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img13.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Edit Page Mobile Prototype">
             <div class="carousel-box">
-                <div class="title">Edit Page Mobile Prototype</div>
+                <div class="title"></div>
                 <img src="images/3/img14.png" />
+          <div class="title-display"></div>
             </div>
         </div>
         </div>
@@ -320,6 +336,13 @@ const displayItems = (item, index, active) => {
   const zIndex = getZindex([...$items], active)[index]
   item.style.setProperty('--zIndex', zIndex)
   item.style.setProperty('--active', (index-active)/$items.length)
+  
+  // Get the data-title and display it in the title-display div
+  const titleText = item.getAttribute('data-title')
+  const titleDisplay = item.querySelector('.title-display')
+  if (titleDisplay) {
+    titleDisplay.textContent = titleText
+  }
 }
 
 /*--------------------
@@ -433,3 +456,6 @@ document.addEventListener('touchend', handleMouseUp)
   <script src="js/lightbox.js"></script>
 </body>
 </html>
+
+
+

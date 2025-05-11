@@ -18,6 +18,8 @@
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/hover-overlay.css">
+    <link rel="stylesheet" href="css/caption-titles.css">
 </head>
   <body>
     <div id="loader">
@@ -48,52 +50,59 @@
     <!-- <a href="#" class="logo"><img src="./images/favicon.ico" alt="logo" class="sitelogo">workwithborj</a> -->
     
     <div class="carousel" id="carousel-container">
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Executive Dashboard">
             <div class="carousel-box">
-                <div class="title">Executive Dashboard</div>
+                <div class="title"></div>
                 <img src="images/4/img1.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Map Dashboard">
             <div class="carousel-box">
-                <div class="title">Map Dashboard</div>
+                <div class="title"></div>
                 <img src="images/4/img2.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Products Dashboard">
             <div class="carousel-box">
-                <div class="title">Products Dashboard</div>
+                <div class="title"></div>
                 <img src="images/4/img3.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Customer Dashboard">
             <div class="carousel-box">
-                <div class="title">Customer Dashboard</div>
+                <div class="title"></div>
                 <img src="images/4/img4.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Custom Tooltips">
             <div class="carousel-box">
-                <div class="title">Custom Tooltips</div>
+                <div class="title"></div>
                 <img src="images/4/img5.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Interactive Feature">
             <div class="carousel-box">
-                <div class="title">Interactive Feature</div>
+                <div class="title"></div>
                 <img src="images/4/img6.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Relational Tables">
             <div class="carousel-box">
-                <div class="title">Relational Tables</div>
+                <div class="title"></div>
                 <img src="images/4/img7.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     </div>
@@ -217,6 +226,13 @@ const displayItems = (item, index, active) => {
   const zIndex = getZindex([...$items], active)[index]
   item.style.setProperty('--zIndex', zIndex)
   item.style.setProperty('--active', (index-active)/$items.length)
+  
+  // Get the data-title and display it in the title-display div
+  const titleText = item.getAttribute('data-title')
+  const titleDisplay = item.querySelector('.title-display')
+  if (titleDisplay) {
+    titleDisplay.textContent = titleText
+  }
 }
 
 /*--------------------
@@ -330,3 +346,6 @@ document.addEventListener('touchend', handleMouseUp)
   <script src="js/lightbox.js"></script>
 </body>
 </html>
+
+
+

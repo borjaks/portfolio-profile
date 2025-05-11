@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("dark-mode");
+      });
+    </script>
+    <link rel="preload" as="image" href="images/logo.png" />
+    <title>My Portfolio</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- box icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/portfolio.css" />
+    <link rel="stylesheet" href="css/hover-overlay.css" />
+    <link rel="stylesheet" href="css/caption-titles.css" />
+  </head>
+  <body>
+    <div id="loader">
+      <img src="images/logo.png" alt="Loading..." />
+    </div>
+
+    <!-- header design -->
+    <header class="header">
+      <a href="index.html#portfolio" class="logo"
+        ><img
+          src="./images/favicon.ico"
+          alt="logo"
+          class="sitelogo"
+        />workwithborj</a
+      >
+
+      <nav class="navbar">
+        <a href="./portfolio.html">View All Projects</a>
+      </nav>
+
+      <div class="bx bx-moon" id="darkMode-icon"></div>
+
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">
+        Project <span>Gallery</span><br />
+        <!-- <p>CLICK TO CHANGE VIEW</p>
+        <img
+          src="images/swiper.svg"
+          class="swiper-img"
+          alt="swiper"
+          title="click to change view"
+          id="gridMode-icon"
+        />
+      </h2>
+      <a
+        href="https://orangered-hornet-134763.hostingersite.com/"
+        target="_blank"
+        class="btn btn-view"
+        >Visit Site</a
+      > -->
+    </section>
+
+    <!-- <a href="#" class="logo"><img src="./images/favicon.ico" alt="logo" class="sitelogo">workwithborj</a> -->
+
+
+    <div class="carousel carousel-hide" id="carousel-container">
+      <div class="carousel-item " data-title="Home Page Screen">
+        <div class="carousel-box">
+          <div class="title">Home Page Screen</div>
+          <img src="images/9/img1.png" />
+          <div class="title-display">Home Page Screen</div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-title="Shop and Products Screen">
+        <div class="carousel-box">
+          <div class="title">Shop and Products Screen</div>
+          <img src="images/9/img2.png" />
+          <div class="title-display">Shop and Products Screen</div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-title="Cart and Checkout Screen">
+        <div class="carousel-box">
+          <div class="title">Cart and Checkout Screen</div>
+          <img src="images/9/img3.png" />
+          <div class="title-display">Cart and Checkout Screen</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container grid-container-show" id="grid-container">
+      <div class="grid-box">
+        <img src="images/9/img1.png" alt="" />
+
+        <div class="grid-layer">
+          <p>Home Page Screen</p>
+        </div>
+      </div>
+      <div class="grid-box">
+        <img src="images/9/img2.png" alt="" />
+
+        <div class="grid-layer">
+          <p>Shop and Products Screen</p>
+        </div>
+      </div>
+      <div class="grid-box">
+        <img src="images/9/img3.png" alt="" />
+
+        <div class="grid-layer">
+          <p>Cart and Checkout Screen</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cursor"></div>
+    <div class="cursor cursor2"></div>
+
+    <div class="floating_btn">
+      <a target="_blank" href="https://wa.me/+639178227458">
+        <div class="contact_icon">
+          <i class="fa fa-whatsapp my-float"></i>
+        </div>
+      </a>
+      <p class="text_icon">Let's Talk?</p>
+    </div>
+
+    <!-- footer design -->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>Copyright &copy; <span id="year"></span> | All Rights Reserved.</p>
+      </div>
+
+      <div class="footer-iconTop">
+        <a href="#"><i class="bx bx-up-arrow-alt"></i></a>
+      </div>
+    </footer>
+
+    <script>
+      const currentYear = new Date().getFullYear();
+      document.getElementById("year").textContent = currentYear;
+    </script>
+
+    <script>
+      /*--------------------
+Vars
+--------------------*/
+      let progress = 50;
+      let startX = 0;
+      let active = 0;
+      let isDown = false;
+
+      /*--------------------
+Contants
+--------------------*/
+      const speedWheel = 0.02;
+      const speedDrag = -0.1;
+
+      /*--------------------
+Get Z
+--------------------*/
+      const getZindex = (array, index) =>
+        array.map((_, i) =>
+          index === i ? array.length : array.length - Math.abs(index - i)
+        );
+
+      /*--------------------
+Items
+--------------------*/
+      const $items = document.querySelectorAll(".carousel-item");
+      const $cursors = document.querySelectorAll(".cursor");
+
+      const displayItems = (item, index, active) => {
+        const zIndex = getZindex([...$items], active)[index];
+        item.style.setProperty("--zIndex", zIndex);
+        item.style.setProperty("--active", (index - active) / $items.length);
+
+        // Get the data-title and display it in the title-display div
+        const titleText = item.getAttribute("data-title");
+        const titleDisplay = item.querySelector(".title-display");
+        if (titleDisplay) {
+          titleDisplay.textContent = titleText;
+        }
+      };
+
+      /*--------------------
+Animate
+--------------------*/
+      const animate = () => {
+        progress = Math.max(0, Math.min(progress, 100));
+        active = Math.floor((progress / 100) * ($items.length - 1));
+
+        $items.forEach((item, index) => displayItems(item, index, active));
+      };
+      animate();
+
+      /*--------------------
+Click on Items
+--------------------*/
+      $items.forEach((item, i) => {
+        item.addEventListener("click", () => {
+          progress = (i / $items.length) * 100 + 10;
+          animate();
+        });
+      });
+
+      /*--------------------
+Handlers
+--------------------*/
+      const handleWheel = (e) => {
+        const wheelProgress = e.deltaY * speedWheel;
+        progress = progress + wheelProgress;
+        animate();
+      };
+
+      const handleMouseMove = (e) => {
+        if (e.type === "mousemove") {
+          $cursors.forEach(($cursor) => {
+            $cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+          });
+        }
+        if (!isDown) return;
+        const x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+        const mouseProgress = (x - startX) * speedDrag;
+        progress = progress + mouseProgress;
+        startX = x;
+        animate();
+      };
+
+      const handleMouseDown = (e) => {
+        isDown = true;
+        startX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+      };
+
+      const handleMouseUp = () => {
+        isDown = false;
+      };
+
+      /*--------------------
+Listeners
+--------------------*/
+      document.addEventListener("mousewheel", handleWheel);
+      document.addEventListener("mousedown", handleMouseDown);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener("touchstart", handleMouseDown);
+      document.addEventListener("touchmove", handleMouseMove);
+      document.addEventListener("touchend", handleMouseUp);
+    </script>
+
+    <!-- custom js -->
+    <script>
+      /*========== dark light mode ==========*/
+      let darkModeIcon = document.querySelector("#darkMode-icon");
+
+      darkModeIcon.onclick = () => {
+        darkModeIcon.classList.toggle("bx-sun");
+        document.body.classList.toggle("dark-mode");
+      };
+    </script>
+
+    <!-- custom js -->
+    <!-- <script>
+      /*========== change view mode ==========*/
+      let gridModeIcon = document.querySelector("#gridMode-icon");
+      let carousel = document.querySelector("#carousel-container");
+      let grid = document.querySelector("#grid-container");
+
+      gridModeIcon.onclick = () => {
+        gridModeIcon.classList.toggle("swiper-grid");
+        carousel.classList.toggle("carousel-hide");
+        grid.classList.toggle("grid-container-show");
+      };
+    </script> -->
+
+    <!-- custom js -->
+    <script src="js/portfolio.js"></script>
+
+    <script>
+      function hideLoader() {
+        var loader = document.getElementById("loader");
+        if (loader) {
+          loader.classList.add("hidden");
+          setTimeout(function () {
+            loader.style.display = "none";
+          }, 400);
+        }
+      }
+      window.addEventListener("load", hideLoader);
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(hideLoader, 2000); // fallback: hide loader after 2s if DOM is ready
+      });
+    </script>
+
+    <!-- lightbox functionality for images -->
+    <script src="js/lightbox.js"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+/* Hover overlay styles for carousel items and grid boxes */
+
+/* Carousel item hover overlay */
+.carousel-box {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Carousel overlay effect on hover */
+.carousel-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+.carousel-box:hover::before {
+  opacity: 1;
+}
+
+.carousel-box .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white-color);
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  width: 90%;
+  opacity: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.carousel-box:hover .title {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Grid box hover overlay */
+.grid-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-box .grid-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+.grid-box:hover .grid-layer {
+  opacity: 1;
+}
+
+.grid-layer p {
+  color: var(--white-color);
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  width: 90%;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.grid-box:hover .grid-layer p {
+  transform: translateY(0);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .carousel-box .title,
+  .grid-layer p {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-box .title,
+  .grid-layer p {
+    font-size: 1.6rem;
+  }
+}

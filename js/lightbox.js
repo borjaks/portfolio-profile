@@ -1,5 +1,3 @@
-// Final solution: Create a fixed set of image viewer buttons outside the carousel
-
 // Function to wait for DOM content to be fully loaded
 function ready(callback) {
   if (document.readyState !== 'loading') {

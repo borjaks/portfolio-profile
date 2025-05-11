@@ -18,6 +18,8 @@
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/hover-overlay.css">
+    <link rel="stylesheet" href="css/caption-titles.css">
 </head>
 <body>
     <div id="loader">
@@ -48,101 +50,115 @@
     <!-- <a href="#" class="logo"><img src="./images/favicon.ico" alt="logo" class="sitelogo">workwithborj</a> -->
     
     <div class="carousel" id="carousel-container">
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Home Page">
             <div class="carousel-box">
-                <div class="title">Home Page</div>
+                <div class="title"></div>
                 <img src="images/2/img1.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Category Page">
             <div class="carousel-box">
-                <div class="title">Category Page</div>
+                <div class="title"></div>
                 <img src="images/2/img2.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Menu Page">
             <div class="carousel-box">
-                <div class="title">Menu Page</div>
+                <div class="title"></div>
                 <img src="images/2/img3.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Menu Page">
             <div class="carousel-box">
-                <div class="title">Menu Page</div>
+                <div class="title"></div>
                 <img src="images/2/img4.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Menu Page">
             <div class="carousel-box">
-                <div class="title">Menu Page</div>
+                <div class="title"></div>
                 <img src="images/2/img5.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Featured Product Page">
             <div class="carousel-box">
-                <div class="title">Featured Product Page</div>
+                <div class="title"></div>
                 <img src="images/2/img6.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Specialties Page">
             <div class="carousel-box">
-                <div class="title">Specialties Page</div>
+                <div class="title"></div>
                 <img src="images/2/img7.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Quick Links Page">
             <div class="carousel-box">
-                <div class="title">Quick Links Page</div>
+                <div class="title"></div>
                 <img src="images/2/img8.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Upcoming Events Page">
             <div class="carousel-box">
-                <div class="title">Upcoming Events Page</div>
+                <div class="title"></div>
                 <img src="images/2/img9.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Skills Page">
             <div class="carousel-box">
-                <div class="title">Skills Page</div>
+                <div class="title"></div>
                 <img src="images/2/img10.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Team Member Page">
             <div class="carousel-box">
-                <div class="title">Team Member Page</div>
+                <div class="title"></div>
                 <img src="images/2/img11.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Videos Page">
             <div class="carousel-box">
-                <div class="title">Videos Page</div>
+                <div class="title"></div>
                 <img src="images/2/img12.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Contact Page">
             <div class="carousel-box">
-                <div class="title">Contact Page</div>
+                <div class="title"></div>
                 <img src="images/2/img13.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Footer">
             <div class="carousel-box">
-                <div class="title">Footer</div>
+                <div class="title"></div>
                 <img src="images/2/img14.png" />
+          <div class="title-display"></div>
             </div>
         </div>
         </div>       
@@ -320,6 +336,13 @@ const displayItems = (item, index, active) => {
   const zIndex = getZindex([...$items], active)[index]
   item.style.setProperty('--zIndex', zIndex)
   item.style.setProperty('--active', (index-active)/$items.length)
+  
+  // Get the data-title and display it in the title-display div
+  const titleText = item.getAttribute('data-title')
+  const titleDisplay = item.querySelector('.title-display')
+  if (titleDisplay) {
+    titleDisplay.textContent = titleText
+  }
 }
 
 /*--------------------
@@ -433,3 +456,5 @@ document.addEventListener('touchend', handleMouseUp)
   <script src="js/lightbox.js"></script>
 </body>
 </html>
+
+

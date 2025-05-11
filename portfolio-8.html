@@ -18,6 +18,8 @@
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/hover-overlay.css">
+    <link rel="stylesheet" href="css/caption-titles.css">
 </head>
   <body>
     <div id="loader">
@@ -50,59 +52,67 @@
     <!-- <a href="#" class="logo"><img src="./images/favicon.ico" alt="logo" class="sitelogo">workwithborj</a> -->
     
     <div class="carousel" id="carousel-container">
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Home Page Screen">
             <div class="carousel-box">
-                <div class="title">Home Page Screen</div>
+                <div class="title"></div>
                 <img src="images/8/img1.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Shop and Products Screen">
             <div class="carousel-box">
-                <div class="title">Shop and Products Screen</div>
+                <div class="title"></div>
                 <img src="images/8/img2.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Cart and Checkout Screen">
             <div class="carousel-box">
-                <div class="title">Cart and Checkout Screen</div>
+                <div class="title"></div>
                 <img src="images/8/img3.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="About Us Screen">
             <div class="carousel-box">
-                <div class="title">About Us Screen</div>
+                <div class="title"></div>
                 <img src="images/8/img4.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Services and Pricing Screen">
             <div class="carousel-box">
-                <div class="title">Services and Pricing Screen</div>
+                <div class="title"></div>
                 <img src="images/8/img5.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Contact Us Screen">
             <div class="carousel-box">
-                <div class="title">Contact Us Screen</div>
+                <div class="title"></div>
                 <img src="images/8/img6.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Login and Account Screen">
             <div class="carousel-box">
-                <div class="title">Login and Account Screen</div>
+                <div class="title"></div>
                 <img src="images/8/img7.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Responsive Device">
             <div class="carousel-box">
-                <div class="title">Responsive Device</div>
+                <div class="title"></div>
                 <img src="images/8/img8.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     </div>
@@ -233,6 +243,13 @@ const displayItems = (item, index, active) => {
   const zIndex = getZindex([...$items], active)[index]
   item.style.setProperty('--zIndex', zIndex)
   item.style.setProperty('--active', (index-active)/$items.length)
+  
+  // Get the data-title and display it in the title-display div
+  const titleText = item.getAttribute('data-title')
+  const titleDisplay = item.querySelector('.title-display')
+  if (titleDisplay) {
+    titleDisplay.textContent = titleText
+  }
 }
 
 /*--------------------
@@ -350,3 +367,6 @@ document.addEventListener('touchend', handleMouseUp)
   <script src="js/lightbox.js"></script>
 </body>
 </html>
+
+
+

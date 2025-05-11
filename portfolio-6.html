@@ -18,6 +18,8 @@
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/hover-overlay.css">
+    <link rel="stylesheet" href="css/caption-titles.css">
 </head>
   <body>
     <div id="loader">
@@ -50,80 +52,91 @@
     <!-- <a href="#" class="logo"><img src="./images/favicon.ico" alt="logo" class="sitelogo">workwithborj</a> -->
     
     <div class="carousel" id="carousel-container">
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Hero Section">
             <div class="carousel-box">
-                <div class="title">Hero Section</div>
+                <div class="title"></div>
                 <img src="images/6/img1.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Hero CTA">
             <div class="carousel-box">
-                <div class="title">Hero CTA</div>
+                <div class="title"></div>
                 <img src="images/6/img2.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Products Banner">
             <div class="carousel-box">
-                <div class="title">Products Banner</div>
+                <div class="title"></div>
                 <img src="images/6/img3.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Product Section">
             <div class="carousel-box">
-                <div class="title">Product Section</div>
+                <div class="title"></div>
                 <img src="images/6/img4.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Product Section">
             <div class="carousel-box">
-                <div class="title">Product Section</div>
+                <div class="title"></div>
                 <img src="images/6/img5.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Product Section">
             <div class="carousel-box">
-                <div class="title">Product Section</div>
+                <div class="title"></div>
                 <img src="images/6/img6.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Product Section">
             <div class="carousel-box">
-                <div class="title">Product Section</div>
+                <div class="title"></div>
                 <img src="images/6/img7.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Media Section">
             <div class="carousel-box">
-                <div class="title">Media Section</div>
+                <div class="title"></div>
                 <img src="images/6/img8.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Media Section">
             <div class="carousel-box">
-                <div class="title">Media Section</div>
+                <div class="title"></div>
                 <img src="images/6/img9.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Footer CTA">
             <div class="carousel-box">
-                <div class="title">Footer CTA</div>
+                <div class="title"></div>
                 <img src="images/6/img10.png" />
+          <div class="title-display"></div>
             </div>
         </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" data-title="Sign-Up Form">
             <div class="carousel-box">
-                <div class="title">Sign-Up Form</div>
+                <div class="title"></div>
                 <img src="images/6/img11.png" />
+          <div class="title-display"></div>
             </div>
         </div>
     </div>
@@ -277,6 +290,13 @@ const displayItems = (item, index, active) => {
   const zIndex = getZindex([...$items], active)[index]
   item.style.setProperty('--zIndex', zIndex)
   item.style.setProperty('--active', (index-active)/$items.length)
+  
+  // Get the data-title and display it in the title-display div
+  const titleText = item.getAttribute('data-title')
+  const titleDisplay = item.querySelector('.title-display')
+  if (titleDisplay) {
+    titleDisplay.textContent = titleText
+  }
 }
 
 /*--------------------
@@ -394,3 +414,6 @@ document.addEventListener('touchend', handleMouseUp)
   <script src="js/lightbox.js"></script>
 </body>
 </html>
+
+
+
