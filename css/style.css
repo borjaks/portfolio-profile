@@ -1679,7 +1679,7 @@ span {
   }
 
   .home-content h1 {
-    font-size: 5rem;
+    font-size: 3.5rem;
     line-height: 110%;
     margin: 15px 0;
   }
@@ -1977,7 +1977,11 @@ span {
     width: 100%;
   }
   .home-content h1 {
-    font-size: 1.6rem;
+    font-size: 3rem;
+  }
+
+  .home-content h3 {
+    font-size: 1.8rem;
   }
 
   .home-content p {
@@ -1997,6 +2001,18 @@ span {
 
   .text-container {
     margin-top: 30px;
+  }
+
+  .text-container .text {
+    font-size: 1.8rem;
+  }
+
+  #myIcon {
+    font-size: 2rem;
+  }
+
+  .about-content p {
+    font-size: 1.4rem;
   }
 }
 
