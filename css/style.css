@@ -802,7 +802,7 @@ span {
   }
   100% {
     transform: translateX(
-      -590px
+      -655px
     ); /* Adjust based on total width of all icons */
   }
 }
@@ -813,7 +813,7 @@ span {
   }
   100% {
     transform: translateX(
-      -680px
+      -720px
     ); /* Adjust based on total width of all icons */
   }
 }
@@ -824,7 +824,7 @@ span {
   }
   100% {
     transform: translateX(
-      -940px
+      -990px
     ); /* Adjust based on total width of all icons */
   }
 }
