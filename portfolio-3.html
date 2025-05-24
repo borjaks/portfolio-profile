@@ -1,13 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <script>document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('dark-mode');});</script>
+        <script>
+        // Apply dark mode consistently with index.html
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('dark-mode');
+            // Ensure main color variable is set properly
+            document.documentElement.style.setProperty('--main-color', '#4169e1');
+            document.documentElement.style.setProperty('--main-color-rgb', '65, 105, 225');
+        });
+    </script>
     <link rel="preload" as="image" href="images/logo.png">
     <title>My Portfolio</title>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/borjaks/images/refs/heads/main/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Using only Font Awesome 4.5.0 for consistency with index.html -->
 
      <!-- box icons -->
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -17,9 +25,46 @@
   
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="stylesheet" href="css/chat-bubble.css">
+    <link rel="stylesheet" href="css/custom-chat.css">
     <link rel="stylesheet" href="css/portfolio.css">
     <link rel="stylesheet" href="css/hover-overlay.css">
     <link rel="stylesheet" href="css/caption-titles.css">
+    <!-- Standardized chat bubble colors to match index.html -->
+    <style id="chat-bubble-fix-styles">
+        /* Ensure consistent colors across all pages */
+        .main-icon {
+            background-color: #0056b3 !important;
+            box-shadow: 0 0 0 0 #0056b3 !important;
+        }
+        @keyframes pulsing-main {
+            to {
+                box-shadow: 0 0 0 18px rgba(0, 86, 179, 0) !important;
+            }
+        }
+        .whatsapp-icon {
+            background-color: #42db87 !important;
+            box-shadow: 0 0 0 0 #42db87 !important;
+        }
+        @keyframes pulsing-whatsapp {
+            to {
+                box-shadow: 0 0 0 18px rgba(66, 219, 135, 0) !important;
+            }
+        }
+        .n8n-icon {
+            background-color: #4169e1 !important;
+            box-shadow: 0 0 0 0 #4169e1 !important;
+        }
+        @keyframes pulsing-n8n {
+            to {
+                box-shadow: 0 0 0 18px rgba(65, 105, 225, 0) !important;
+            }
+        }
+        .chat-header {
+            background: #4169e1 !important;
+        }
+    </style>
 </head>
   <body>
     <div id="loader">
@@ -281,14 +326,7 @@
     <div class="cursor"></div>
     <div class="cursor cursor2"></div>
 
-    <div class="floating_btn">
-        <a target="_blank" href="https://wa.me/+639178227458">
-          <div class="contact_icon">
-            <i class="fa fa-whatsapp my-float"></i>
-          </div>
-        </a>
-        <p class="text_icon">Let's Talk?</p>
-    </div>
+    <!-- WhatsApp floating button removed and replaced with the Let's Talk drawer -->
     
     <!-- footer design -->
     <footer class="footer">
@@ -457,8 +495,98 @@ document.addEventListener('touchend', handleMouseUp)
   
   <!-- grid title display -->
   <script src="js/grid-titles.js"></script>
+
+    
+  
+
+<!-- Chat bubble drawer -->
+<div class="chat-bubble-container">
+  <!-- Main chat button -->
+  <div class="main-chat-button" id="mainChatButton">
+    <div class="contact_icon main-icon">
+      <i class="fa fa-comments my-float"></i>
+    </div>
+    <p class="text_icon">Let's Talk?</p>
+  </div>
+  
+  <!-- Chat options drawer (hidden by default) -->
+  <div class="chat-options" id="chatOptions">
+    <!-- WhatsApp option -->
+    <a target="_blank" href="https://wa.me/+639178227458" class="chat-option whatsapp-option">
+      <div class="contact_icon whatsapp-icon">
+        <i class="fa fa-whatsapp my-float"></i>
+      </div>
+      <span>WhatsApp</span>
+    </a>
+    
+    <!-- BorjBot chat option that will directly call n8n chat -->
+    <div class="chat-option n8n-option" id="borjbotOption">
+      <div class="contact_icon n8n-icon">
+        <i class="fa fa-android my-float"></i>
+      </div>
+      <span>BorjBot</span>
+    </div>
+  </div>
+</div>
+
+<!-- Custom chat interface -->
+<div id="custom-chat" class="chat-interface">
+  <div class="chat-header">
+    <h3>BorjBot</h3>
+    <button class="close-chat">&times;</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <!-- Messages will be added here -->
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chat-input" placeholder="Type your message..." />
+    <button id="send-message">Send</button>
+  </div>
+</div>
+  
+  <!-- Chat Bubble Drawer Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mainChatButton = document.getElementById('mainChatButton');
+      const chatOptions = document.getElementById('chatOptions');
+      const borjbotOption = document.getElementById('borjbotOption');
+      let isDrawerOpen = false;
+      
+      // Toggle chat options drawer
+      mainChatButton.addEventListener('click', function() {
+        isDrawerOpen = !isDrawerOpen;
+        
+        if (isDrawerOpen) {
+          chatOptions.classList.add('show');
+        } else {
+          chatOptions.classList.remove('show');
+        }
+      });
+      
+      // Close options when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!mainChatButton.contains(e.target) && !chatOptions.contains(e.target)) {
+          chatOptions.classList.remove('show');
+          isDrawerOpen = false;
+        }
+      });
+    });
+  </script>
+
+<!-- n8n Chat library -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"></script>
+
+<!-- Chat functionality -->
+<script src="js/chat.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

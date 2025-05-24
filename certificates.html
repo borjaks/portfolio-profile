@@ -41,6 +41,9 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Chat CSS -->
+    <link rel="stylesheet" href="css/chat-bubble.css" />
+    <link rel="stylesheet" href="css/custom-chat.css" />
     <!-- Preload loader image -->
     <link rel="preload" as="image" href="images/logo.png" />
   </head>
@@ -627,14 +630,7 @@
       </div>
     </section>
 
-    <div class="floating_btn">
-      <a target="_blank" href="https://wa.me/+639178227458">
-        <div class="contact_icon">
-          <i class="fa fa-whatsapp my-float"></i>
-        </div>
-      </a>
-      <p class="text_icon">Let's Talk?</p>
-    </div>
+    <!-- WhatsApp floating button removed and replaced with the Let's Talk drawer -->
 
     <!-- footer design -->
     <footer class="footer">
@@ -674,5 +670,58 @@
       }, 400);
     });
   </script>
+  
+  <!-- Chat bubble drawer -->
+  <div class="chat-bubble-container">
+    <!-- Main chat button -->
+    <div class="main-chat-button" id="mainChatButton">
+      <div class="contact_icon main-icon">
+        <i class="fa fa-comments my-float"></i>
+      </div>
+      <p class="text_icon">Let's Talk?</p>
+    </div>
+    
+    <!-- Chat options drawer (hidden by default) -->
+    <div class="chat-options" id="chatOptions">
+      <!-- WhatsApp option -->
+      <a target="_blank" href="https://wa.me/+639178227458" class="chat-option whatsapp-option">
+        <div class="contact_icon whatsapp-icon">
+          <i class="fa fa-whatsapp my-float"></i>
+        </div>
+        <span>WhatsApp</span>
+      </a>
+      
+      <!-- BorjBot chat option that will directly call n8n chat -->
+      <div class="chat-option n8n-option" id="borjbotOption">
+        <div class="contact_icon n8n-icon">
+          <i class="fa fa-android my-float"></i>
+        </div>
+        <span>BorjBot</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Custom chat interface -->
+  <div id="custom-chat" class="chat-interface">
+    <div class="chat-header">
+      <h3>BorjBot</h3>
+      <button class="close-chat">&times;</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <!-- Messages will be added here -->
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="Type your message..." />
+      <button id="send-message">Send</button>
+    </div>
+  </div>
+  
+  <!-- n8n Chat library -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"></script>
+  
+  <!-- Chat functionality -->
+  <script src="js/chat.js"></script>
+  
 </body>
 </html>

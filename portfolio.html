@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -41,8 +41,57 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/scrollbar.css" />
+    <link rel="stylesheet" href="css/chat-bubble.css" />
+    <link rel="stylesheet" href="css/custom-chat.css" />
     <!-- Preload loader image -->
     <link rel="preload" as="image" href="images/logo.png" />
+    <!-- Standardized chat bubble colors to match index.html -->
+    <style id="chat-bubble-fix-styles">
+      /* Ensure consistent colors across all pages */
+      .main-icon {
+        background-color: #0056b3 !important;
+        box-shadow: 0 0 0 0 #0056b3 !important;
+      }
+      @keyframes pulsing-main {
+        to {
+          box-shadow: 0 0 0 18px rgba(0, 86, 179, 0) !important;
+        }
+      }
+      .whatsapp-icon {
+        background-color: #42db87 !important;
+        box-shadow: 0 0 0 0 #42db87 !important;
+      }
+      @keyframes pulsing-whatsapp {
+        to {
+          box-shadow: 0 0 0 18px rgba(66, 219, 135, 0) !important;
+        }
+      }
+      .n8n-icon {
+        background-color: #4169e1 !important;
+        box-shadow: 0 0 0 0 #4169e1 !important;
+      }
+      @keyframes pulsing-n8n {
+        to {
+          box-shadow: 0 0 0 18px rgba(65, 105, 225, 0) !important;
+        }
+      }
+      .chat-header {
+        background: #4169e1 !important;
+      }
+    </style>
+    <script>
+      // Apply dark mode consistently with index.html
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("dark-mode");
+        // Ensure main color variable is set properly
+        document.documentElement.style.setProperty("--main-color", "#4169e1");
+        document.documentElement.style.setProperty(
+          "--main-color-rgb",
+          "65, 105, 225"
+        );
+      });
+    </script>
   </head>
 
   <body>
@@ -304,6 +353,48 @@
         </div>
 
         <div class="portfolio-box">
+          <img src="images/n8n-Telegram.png" alt="" />
+          <div class="tool-list" style="margin-top: 14px">
+            <span>n8n</span>
+            <span>AI Integration</span>
+            <span>Chatbot Development</span>
+          </div>
+          <div class="portfolio-layer">
+            <h4>Telegram Personal AI Assistant Chatbot</h4>
+            <p>
+              An intelligent personal assistant built on n8n, integrating
+              OpenAI, Telegram, and various AI agents to streamline voice and
+              text interactions. The bot dynamically handles both audio and text
+              messages from Telegram users.
+            </p>
+            <a href="./portfolio-10.html"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/n8n-RAG.png" alt="" />
+          <div class="tool-list" style="margin-top: 14px">
+            <span>n8n</span>
+            <span>AI Integration</span>
+            <span>Chatbot Development</span>
+          </div>
+          <div class="portfolio-layer">
+            <h4>RAG Chatbot + Lead Capture System</h4>
+            <p>
+              A Retrieval-Augmented Generation (RAG) chatbot using n8n, OpenAI,
+              Pinecone vector storage. It serves as an intelligent website
+              assistant to answer FAQs, guide users, and capture qualified
+              leads—seamlessly integrated into the site experience.
+            </p>
+            <a href="./portfolio-11.html"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
           <img
             src="https://github.com/user-attachments/assets/a2855fe0-852a-4930-97aa-a928a52bff90"
             alt=""
@@ -462,9 +553,7 @@
           </div>
           <div class="portfolio-layer">
             <h4>Zapier Automations</h4>
-            <p>
-              Collection of Automation Workflows built using Zapier
-            </p>
+            <p>Collection of Automation Workflows built using Zapier</p>
             <a href="./portfolio-9.html"><i class="bx bx-link-external"></i></a>
           </div>
         </div>
@@ -480,14 +569,7 @@
       </div>
     </section>
 
-    <div class="floating_btn">
-      <a target="_blank" href="https://wa.me/+639178227458">
-        <div class="contact_icon">
-          <i class="fa fa-whatsapp my-float"></i>
-        </div>
-      </a>
-      <p class="text_icon">Let's Talk?</p>
-    </div>
+    <!-- WhatsApp floating button removed and replaced with the Let's Talk drawer -->
 
     <!-- footer design -->
     <footer class="footer">
@@ -534,5 +616,96 @@
         }, 400);
       });
     </script>
+
+    <!-- Chat bubble drawer -->
+    <div class="chat-bubble-container">
+      <!-- Main chat button -->
+      <div class="main-chat-button" id="mainChatButton">
+        <div class="contact_icon main-icon">
+          <i class="fa fa-comments my-float"></i>
+        </div>
+        <p class="text_icon">Let's Talk?</p>
+      </div>
+
+      <!-- Chat options drawer (hidden by default) -->
+      <div class="chat-options" id="chatOptions">
+        <!-- WhatsApp option -->
+        <a
+          target="_blank"
+          href="https://wa.me/+639178227458"
+          class="chat-option whatsapp-option"
+        >
+          <div class="contact_icon whatsapp-icon">
+            <i class="fa fa-whatsapp my-float"></i>
+          </div>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- BorjBot chat option that will directly call n8n chat -->
+        <div class="chat-option n8n-option" id="borjbotOption">
+          <div class="contact_icon n8n-icon">
+            <i class="fa fa-android my-float"></i>
+          </div>
+          <span>BorjBot</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom chat interface -->
+    <div id="custom-chat" class="chat-interface">
+      <div class="chat-header">
+        <h3>BorjBot</h3>
+        <button class="close-chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be added here -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Type your message..." />
+        <button id="send-message">Send</button>
+      </div>
+    </div>
+
+    <!-- Chat Bubble Drawer Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mainChatButton = document.getElementById("mainChatButton");
+        const chatOptions = document.getElementById("chatOptions");
+        const borjbotOption = document.getElementById("borjbotOption");
+        let isDrawerOpen = false;
+
+        // Toggle chat options drawer
+        mainChatButton.addEventListener("click", function () {
+          isDrawerOpen = !isDrawerOpen;
+
+          if (isDrawerOpen) {
+            chatOptions.classList.add("show");
+          } else {
+            chatOptions.classList.remove("show");
+          }
+        });
+
+        // Close options when clicking outside
+        document.addEventListener("click", function (e) {
+          if (
+            !mainChatButton.contains(e.target) &&
+            !chatOptions.contains(e.target)
+          ) {
+            chatOptions.classList.remove("show");
+            isDrawerOpen = false;
+          }
+        });
+      });
+    </script>
+
+    <!-- n8n Chat library -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"></script>
+
+    <!-- Chat functionality -->
+    <script src="js/chat.js"></script>
   </body>
 </html>

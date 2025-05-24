@@ -42,9 +42,15 @@
     />
 
     <!-- custom css -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="stylesheet" href="css/chat-bubble.css">
+    <link rel="stylesheet" href="css/custom-chat.css">
     <!-- Preload loader image -->
     <link rel="preload" as="image" href="images/logo.png" />
+    
+    <!-- n8n chat resources -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -842,6 +848,60 @@
             <a href="./portfolio-1.html"><i class="bx bx-link-external"></i></a>
           </div>
         </div>
+
+        <div class="portfolio-box">
+          <img src="images/n8n-Telegram.png" alt="" />
+          <div class="tool-list" style="margin-top:14px;">
+            <span>n8n</span>
+            <span>AI Integration</span>
+            <span>Chatbot Development</span>
+          </div>  
+          <div class="portfolio-layer">
+            <h4>Telegram Personal AI Assistant Chatbot</h4>
+            <p>
+              An intelligent personal assistant built on n8n, integrating OpenAI, Telegram, and various AI agents to streamline voice and text interactions. The bot dynamically handles both audio and text messages from Telegram users.
+            </p>
+            <a href="./portfolio-10.html"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/n8n-RAG.png" alt="" />
+          <div class="tool-list" style="margin-top:14px;">
+            <span>n8n</span>
+            <span>AI Integration</span>
+            <span>Chatbot Development</span>
+          </div>  
+          <div class="portfolio-layer">
+            <h4>RAG Chatbot + Lead Capture System</h4>
+            <p>
+              A Retrieval-Augmented Generation (RAG) chatbot using n8n, OpenAI, Pinecone vector storage. It serves as an intelligent website assistant to answer FAQs, guide users, and capture qualified leads—seamlessly integrated into the site experience.
+            </p>
+            <a href="./portfolio-11.html"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+
+
+        <div class="portfolio-box">
+          <img
+            src="https://github.com/user-attachments/assets/7e1b839c-360b-40eb-b90e-bf81b1b4aa8e"
+            alt=""
+          />
+          <div class="tool-list" style="margin-top: 14px">
+            <span>HTML</span>
+            <span>Vanilla CSS</span>
+            <span>Vanilla JS</span>
+            <span>JQuery</span>
+          </div>
+          <div class="portfolio-layer">
+            <h4>Memory Game</h4>
+            <p>
+              Simple Memory Game Project created using HTML, CSS and Javascript
+              JQuery Library.
+            </p>
+            <a href="./memory-game.html"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
         <!-- <div class="portfolio-box">
                 <img src="images/automation.png" alt="">
 
@@ -1186,14 +1246,6 @@
       </form>
     </section>
 
-    <div class="floating_btn">
-      <a target="_blank" href="https://wa.me/+639178227458">
-        <div class="contact_icon">
-          <i class="fa fa-whatsapp my-float"></i>
-        </div>
-      </a>
-      <p class="text_icon">Let's Talk?</p>
-    </div>
 
     <!-- footer design -->
     <footer class="footer">
@@ -1314,8 +1366,13 @@
     <!-- swiper js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
+    <!-- n8n Chat library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"></script>
+    
     <!-- custom js -->
     <script src="js/script.js"></script>
+    <script src="js/chat.js"></script>
 
     <!-- parallax effect js -->
     <script>
@@ -1341,5 +1398,93 @@
       }, 400); // matches transition duration
     });
   </script>
+
+
+<!-- Chat bubble drawer -->
+<div class="chat-bubble-container">
+  <!-- Main chat button -->
+  <div class="main-chat-button" id="mainChatButton">
+    <div class="contact_icon main-icon">
+      <i class="fa fa-comments my-float"></i>
+    </div>
+    <p class="text_icon">Let's Talk?</p>
+  </div>
+  
+  <!-- Chat options drawer (hidden by default) -->
+  <div class="chat-options" id="chatOptions">
+    <!-- WhatsApp option -->
+    <a target="_blank" href="https://wa.me/+639178227458" class="chat-option whatsapp-option">
+      <div class="contact_icon whatsapp-icon">
+        <i class="fa fa-whatsapp my-float"></i>
+      </div>
+      <span>WhatsApp</span>
+    </a>
+    
+    <!-- BorjBot chat option that will directly call n8n chat -->
+    <div class="chat-option n8n-option" id="borjbotOption">
+      <div class="contact_icon n8n-icon">
+        <i class="fa fa-android my-float"></i>
+      </div>
+      <span>BorjBot</span>
+    </div>
+  </div>
+</div>
+
+<!-- Custom chat interface -->
+<div id="custom-chat" class="chat-interface">
+  <div class="chat-header">
+    <h3>BorjBot</h3>
+    <button class="close-chat">&times;</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <!-- Messages will be added here -->
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chat-input" placeholder="Type your message..." />
+    <button id="send-message">Send</button>
+  </div>
+</div>
+  
+  <!-- Chat Bubble Drawer Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mainChatButton = document.getElementById('mainChatButton');
+      const chatOptions = document.getElementById('chatOptions');
+      const borjbotOption = document.getElementById('borjbotOption');
+      let isDrawerOpen = false;
+      
+      // Toggle chat options drawer
+      mainChatButton.addEventListener('click', function() {
+        isDrawerOpen = !isDrawerOpen;
+        
+        if (isDrawerOpen) {
+          chatOptions.classList.add('show');
+        } else {
+          chatOptions.classList.remove('show');
+        }
+      });
+      
+      // Handle BorjBot option click
+      borjbotOption.addEventListener('click', function() {
+        
+        // Close the drawer
+        isDrawerOpen = false;
+        chatOptions.classList.remove('show');
+      });
+      
+      // Close drawer when clicking outside
+      document.addEventListener('click', function(event) {
+        const isClickInsideChat = mainChatButton.contains(event.target) || 
+                                  chatOptions.contains(event.target);
+        
+        if (!isClickInsideChat && isDrawerOpen) {
+          isDrawerOpen = false;
+          chatOptions.classList.remove('show');
+        }
+      });
+    });
+  </script>
+  
+  
 </body>
 </html>

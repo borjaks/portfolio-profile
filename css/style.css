@@ -153,11 +153,12 @@
 :root {
   --bg-color: #fdfdfd;
   --text-color: #333;
-  --main-color: royalblue;
+  --main-color: #4169e1;
   --main-color-rgb: 65, 105, 225;
   --white-color: #fdfdfd;
   --dark-color: #333;
   --shadow-color: rgba(0, 0, 0, 0.2);
+  --border-color: rgba(0, 0, 0, 0.2);
 }
 
 *::selection {
@@ -169,6 +170,7 @@
   --bg-color: #0b061f;
   --text-color: #fdfdfd;
   --shadow-color: rgba(0, 0, 0, 0.7);
+  --border-color: rgba(255, 255, 255, 0.2);
 }
 
 html {
