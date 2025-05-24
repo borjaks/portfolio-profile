@@ -46,7 +46,7 @@
   transition: all 0.3s ease;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgb(65, 105, 225, 0.6);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -105,13 +105,13 @@
   .chat-bubble-container {
     width: 80px;
   }
-  
+
   .contact_icon {
     width: 3.5rem;
     height: 3.5rem;
     font-size: 2rem;
   }
-  
+
   .chat-option span {
     font-size: 12px;
   }
