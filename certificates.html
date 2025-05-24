@@ -54,16 +54,16 @@
     </div>
     <script>
       function hideLoader() {
-        var loader = document.getElementById('loader');
+        var loader = document.getElementById("loader");
         if (loader) {
-          loader.classList.add('hidden');
-          setTimeout(function() {
-            loader.style.display = 'none';
+          loader.classList.add("hidden");
+          setTimeout(function () {
+            loader.style.display = "none";
           }, 400);
         }
       }
-      window.addEventListener('load', hideLoader);
-      document.addEventListener('DOMContentLoaded', function () {
+      window.addEventListener("load", hideLoader);
+      document.addEventListener("DOMContentLoaded", function () {
         setTimeout(hideLoader, 2000);
       });
     </script>
@@ -88,7 +88,8 @@
               target="_blank"
               id="trackBtn"
               download
-              >Download CV</a>
+              >Download CV</a
+            >
           </div>
         </div>
         <a href="index.html#services">Services</a>
@@ -618,6 +619,29 @@
           </div>
         </div>
 
+        <div class="portfolio-box">
+          <img
+            src="./images/certificates/AI Automation -Build LLM Apps & AI-Agents with n8n & APIs.jpg"
+            alt="The Ultimate React Course 2025"
+          />
+
+          <div class="portfolio-layer">
+            <h4>AI Automation: Build LLM Apps & AI-Agents with n8n & APIs</h4>
+            <p>
+              Issued By: Udemy
+              <br />
+              Issued Date: May 2025
+              <br />
+              Credential ID: UC-31d36583-5500-4a8d-adb1-00ad16643fb9
+            </p>
+            <a
+              href="https://www.udemy.com/certificate/UC-31d36583-5500-4a8d-adb1-00ad16643fb9/"
+              target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+
         <!-- <div class="portfolio-box">
                 <img src="https://github.com/user-attachments/assets/eed79b3a-e607-4d02-9e83-2ab0a11b92c1" alt="">
 
@@ -663,65 +687,71 @@
     <!-- custom js -->
     <script src="js/certificates.js"></script>
     <script>
-    window.addEventListener('load', function() {
-      document.getElementById('loader').classList.add('hidden');
-      setTimeout(function() {
-        document.getElementById('loader').style.display = 'none';
-      }, 400);
-    });
-  </script>
-  
-  <!-- Chat bubble drawer -->
-  <div class="chat-bubble-container">
-    <!-- Main chat button -->
-    <div class="main-chat-button" id="mainChatButton">
-      <div class="contact_icon main-icon">
-        <i class="fa fa-comments my-float"></i>
-      </div>
-      <p class="text_icon">Let's Talk?</p>
-    </div>
-    
-    <!-- Chat options drawer (hidden by default) -->
-    <div class="chat-options" id="chatOptions">
-      <!-- WhatsApp option -->
-      <a target="_blank" href="https://wa.me/+639178227458" class="chat-option whatsapp-option">
-        <div class="contact_icon whatsapp-icon">
-          <i class="fa fa-whatsapp my-float"></i>
+      window.addEventListener("load", function () {
+        document.getElementById("loader").classList.add("hidden");
+        setTimeout(function () {
+          document.getElementById("loader").style.display = "none";
+        }, 400);
+      });
+    </script>
+
+    <!-- Chat bubble drawer -->
+    <div class="chat-bubble-container">
+      <!-- Main chat button -->
+      <div class="main-chat-button" id="mainChatButton">
+        <div class="contact_icon main-icon">
+          <i class="fa fa-comments my-float"></i>
         </div>
-        <span>WhatsApp</span>
-      </a>
-      
-      <!-- BorjBot chat option that will directly call n8n chat -->
-      <div class="chat-option n8n-option" id="borjbotOption">
-        <div class="contact_icon n8n-icon">
-          <i class="fa fa-android my-float"></i>
+        <p class="text_icon">Let's Talk?</p>
+      </div>
+
+      <!-- Chat options drawer (hidden by default) -->
+      <div class="chat-options" id="chatOptions">
+        <!-- WhatsApp option -->
+        <a
+          target="_blank"
+          href="https://wa.me/+639178227458"
+          class="chat-option whatsapp-option"
+        >
+          <div class="contact_icon whatsapp-icon">
+            <i class="fa fa-whatsapp my-float"></i>
+          </div>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- BorjBot chat option that will directly call n8n chat -->
+        <div class="chat-option n8n-option" id="borjbotOption">
+          <div class="contact_icon n8n-icon">
+            <i class="fa fa-android my-float"></i>
+          </div>
+          <span>BorjBot</span>
         </div>
-        <span>BorjBot</span>
       </div>
     </div>
-  </div>
-  
-  <!-- Custom chat interface -->
-  <div id="custom-chat" class="chat-interface">
-    <div class="chat-header">
-      <h3>BorjBot</h3>
-      <button class="close-chat">&times;</button>
+
+    <!-- Custom chat interface -->
+    <div id="custom-chat" class="chat-interface">
+      <div class="chat-header">
+        <h3>BorjBot</h3>
+        <button class="close-chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be added here -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Type your message..." />
+        <button id="send-message">Send</button>
+      </div>
     </div>
-    <div class="chat-messages" id="chat-messages">
-      <!-- Messages will be added here -->
-    </div>
-    <div class="chat-input">
-      <input type="text" id="chat-input" placeholder="Type your message..." />
-      <button id="send-message">Send</button>
-    </div>
-  </div>
-  
-  <!-- n8n Chat library -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"></script>
-  
-  <!-- Chat functionality -->
-  <script src="js/chat.js"></script>
-  
-</body>
+
+    <!-- n8n Chat library -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"></script>
+
+    <!-- Chat functionality -->
+    <script src="js/chat.js"></script>
+  </body>
 </html>
