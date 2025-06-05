@@ -4,10 +4,72 @@ document.addEventListener("DOMContentLoaded", function () {
   const mainChatButton = document.querySelector(".main-chat-button");
   const chatOptions = document.getElementById("chatOptions");
   const borjbotOption = document.getElementById("borjbotOption");
+  const botStatusIndicator = document.getElementById("botStatusIndicator");
+  const botStatusText = document.getElementById("botStatusText");
+  
+  // Webhook URL for checking BorjBot online status
+  const webhookUrl = "https://n8n-dev-tx45.onrender.com/webhook/854c829c-2ce6-426f-89e2-ed44d33182f3/chat";
 
   // Create n8n chat instance (but don't display it)
   let n8nChatClient;
   let sessionId = localStorage.getItem("sessionId") || generateSessionId();
+  
+  // Function to check if BorjBot is online
+  async function checkBotStatus() {
+    botStatusIndicator.className = "status-indicator";
+    botStatusText.className = "status-text";
+    botStatusText.textContent = "Checking...";
+    
+    try {
+      // Add a timestamp to prevent caching
+      const response = await fetch(`${webhookUrl}?_=${Date.now()}`, {
+        method: "GET",
+        // Set a timeout to prevent hanging if the server doesn't respond
+        signal: AbortSignal.timeout(5000)
+      });
+      
+      
+      if (!response.ok) {
+        setBotOffline();
+        return;
+      }
+      
+      // If we get a 200 OK response, the bot is considered online
+      // No need to check the response body content
+      if (response.status === 200) {
+        setBotOnline();
+        return;
+      }
+      
+      // If we get here, something unexpected happened
+      setBotOffline();
+    } catch (error) {
+      console.error("Error checking bot status:", error);
+      setBotOffline();
+    }
+  }
+  
+  // Function to set bot status to online
+  function setBotOnline() {
+    botStatusIndicator.className = "status-indicator online";
+    botStatusText.className = "status-text online";
+    botStatusText.textContent = "Online";
+    
+  }
+  
+  // Function to set bot status to offline
+  function setBotOffline() {
+    botStatusIndicator.className = "status-indicator offline";
+    botStatusText.className = "status-text offline";
+    botStatusText.textContent = "Offline";
+    console.log("BorjBot is offline!");
+  }
+  
+  // Check bot status immediately
+  checkBotStatus();
+  
+  // Check bot status periodically (every 60 seconds)
+  setInterval(checkBotStatus, 60000);
 
   // Function to generate a unique session ID
   function generateSessionId() {
@@ -77,6 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Toggle chat options drawer
   mainChatButton.addEventListener("click", function () {
     chatOptions.classList.toggle("show");
+    
+    // Check bot status when the drawer is opened
+    if (chatOptions.classList.contains("show")) {
+      checkBotStatus();
+    }
   });
 
   // Close chat options when clicking outside
