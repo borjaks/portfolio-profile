@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize the n8n chat client with the exact configuration
     n8nChatClient = window.createChat({
       webhookUrl:
-        "https://0200-136-158-41-213.ngrok-free.app/webhook/854c829c-2ce6-426f-89e2-ed44d33182f3/chat",
+        "https://n8n-dev-tx45.onrender.com/webhook/854c829c-2ce6-426f-89e2-ed44d33182f3/chat",
       webhookConfig: {
         method: "POST",
         headers: {},
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.getItem("sessionId") || generateSessionId();
 
           const fallbackResponse = await fetch(
-            "https://0200-136-158-41-213.ngrok-free.app/webhook/854c829c-2ce6-426f-89e2-ed44d33182f3/chat",
+            "https://n8n-dev-tx45.onrender.com/webhook/854c829c-2ce6-426f-89e2-ed44d33182f3/chat",
             {
               method: "POST",
               headers: {
