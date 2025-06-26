@@ -92,7 +92,8 @@
             <a
               href="/docs/Raldz Borja (New CV 2025).pdf"
               target="_blank"
-              id="trackBtn"
+              id="navTrackBtn"
+              class="cv-download-btn"
               download
               >Download CV</a
             >
@@ -495,8 +496,8 @@
           <a
             href="/docs/Raldz Borja (New CV 2025).pdf"
             target="_blank"
-            class="btn btn-cv"
-            id="trackBtn"
+            class="btn btn-cv cv-download-btn"
+            id="aboutTrackBtn"
             download
             >Download CV</a
           >
@@ -873,9 +874,9 @@
             <span>Chatbot Development</span>
           </div>  
           <div class="portfolio-layer">
-            <h4>RAG Chatbot + Lead Capture System</h4>
+            <h4>RAG Chatbot + Lead Capture & Notification System</h4>
             <p>
-              A Retrieval-Augmented Generation (RAG) chatbot using n8n, OpenAI, Pinecone vector storage. It serves as an intelligent website assistant to answer FAQs, guide users, and capture qualified leads—seamlessly integrated into the site experience.
+              A Retrieval-Augmented Generation (RAG) chatbot integrated into the website. Created using n8n, OpenAI, Pinecone vector storage, Google Sheets and Telegram Bot. It serves as an intelligent website assistant to answer FAQs, guide users, and capture qualified leads.
             </p>
             <a href="./portfolio-11.html"><i class="bx bx-link-external"></i></a>
           </div>
@@ -1373,8 +1374,36 @@
     <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
-    <!-- swiper js -->
+    <!-- swiper js -->    
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- CV Download Tracking -->    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Select all download CV buttons using the common class
+        const downloadButtons = document.querySelectorAll('.cv-download-btn');
+        
+        // Add click event listener to each button
+        downloadButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Send webhook to n8n
+            fetch("https://n8n-dev-tx45.onrender.com/webhook/cv-clicked", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                event: "cv_download_click",
+                buttonId: button.id,
+                timestamp: new Date().toISOString()
+              })
+            }).catch((err) => {
+              console.error("Webhook call failed:", err);
+            });
+          });
+        });
+      });
+    </script>
 
     <!-- n8n Chat library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">

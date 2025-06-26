@@ -86,7 +86,8 @@
             <a
               href="/docs/Raldz Borja (New CV 2025).pdf"
               target="_blank"
-              id="trackBtn"
+              id="certificatesTrackBtn"
+              class="cv-download-btn"
               download
               >Download CV</a
             >
@@ -755,5 +756,33 @@
 
     <!-- Chat functionality -->
     <script src="js/chat.js"></script>
+
+    <!-- CV Download Tracking -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Select all download CV buttons using the common class
+        const downloadButtons = document.querySelectorAll('.cv-download-btn');
+        
+        // Add click event listener to each button
+        downloadButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Send webhook to n8n
+            fetch("https://n8n-dev-tx45.onrender.com/webhook/cv-clicked", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                event: "cv_download_click",
+                buttonId: button.id,
+                timestamp: new Date().toISOString()
+              })
+            }).catch((err) => {
+              console.error("Webhook call failed:", err);
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>
