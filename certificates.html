@@ -623,7 +623,7 @@
         <div class="portfolio-box">
           <img
             src="./images/certificates/AI Automation -Build LLM Apps & AI-Agents with n8n & APIs.jpg"
-            alt="The Ultimate React Course 2025"
+            alt="AI Automation -Build LLM Apps & AI-Agents with n8n & APIs"
           />
 
           <div class="portfolio-layer">
@@ -637,6 +637,29 @@
             </p>
             <a
               href="https://www.udemy.com/certificate/UC-31d36583-5500-4a8d-adb1-00ad16643fb9/"
+              target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img
+            src="./images/certificates/N8N - AI Agents, AI Automations & AI Voice Agents.jpg"
+            alt="N8N - AI Agents, AI Automations & AI Voice Agents"
+          />
+
+          <div class="portfolio-layer">
+            <h4>N8N - AI Agents, AI Automations & AI Voice Agents</h4>
+            <p>
+              Issued By: Udemy
+              <br />
+              Issued Date: Jun 2025
+              <br />
+              Credential ID: UC-284d851c-635e-4f8b-87a1-34c67e8a2ef6
+            </p>
+            <a
+              href="https://www.udemy.com/certificate/UC-284d851c-635e-4f8b-87a1-34c67e8a2ef6/"
               target="_blank"
               ><i class="bx bx-link-external"></i
             ></a>
@@ -759,24 +782,24 @@
 
     <!-- CV Download Tracking -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         // Select all download CV buttons using the common class
-        const downloadButtons = document.querySelectorAll('.cv-download-btn');
-        
+        const downloadButtons = document.querySelectorAll(".cv-download-btn");
+
         // Add click event listener to each button
-        downloadButtons.forEach(button => {
-          button.addEventListener('click', () => {
+        downloadButtons.forEach((button) => {
+          button.addEventListener("click", () => {
             // Send webhook to n8n
             fetch("https://n8n-dev-tx45.onrender.com/webhook/cv-clicked", {
               method: "POST",
               headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
               },
               body: JSON.stringify({
                 event: "cv_download_click",
                 buttonId: button.id,
-                timestamp: new Date().toISOString()
-              })
+                timestamp: new Date().toISOString(),
+              }),
             }).catch((err) => {
               console.error("Webhook call failed:", err);
             });
