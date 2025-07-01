@@ -1478,8 +1478,28 @@
       <span>BorjBot</span>
       <span class="status-text" id="botStatusText">Checking...</span>
     </div>
+
+    <!-- AI Voice Agent chat option -->
+    <div class="chat-option ai-voice-option" id="aiVoiceOption">
+      <div class="contact_icon ai-voice-icon">
+        <i class="fa fa-microphone my-float"></i>
+      </div>
+      <span>AI Voice Agent</span>
+    </div>
   </div>
 </div>
+
+<!-- AI Voice Agent drawer -->
+<div class="ai-voice-drawer" id="aiVoiceDrawer">
+  <div class="ai-drawer-header">
+    <h3>AI Voice Agent</h3>
+    <button class="close-voice-drawer" id="closeVoiceDrawer">&times;</button>
+  </div>
+  <div class="ai-drawer-body">
+    <elevenlabs-convai agent-id="agent_01jyv0j1ywfzdsjbc3en3gjnh8"></elevenlabs-convai>
+  </div>
+</div>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <!-- Custom chat interface -->
 <div id="custom-chat" class="chat-interface">
@@ -1502,7 +1522,27 @@
       const mainChatButton = document.getElementById('mainChatButton');
       const chatOptions = document.getElementById('chatOptions');
       const borjbotOption = document.getElementById('borjbotOption');
+      const aiVoiceOption = document.getElementById('aiVoiceOption');
+      const aiVoiceDrawer = document.getElementById('aiVoiceDrawer');
+      const closeVoiceDrawer = document.getElementById('closeVoiceDrawer');
       let isDrawerOpen = false;
+      const customChat = document.getElementById('custom-chat');
+
+      function updateMainButtonState() {
+        const chatOpen = aiVoiceDrawer.classList.contains('show') || customChat.classList.contains('show');
+        mainChatButton.style.pointerEvents = chatOpen ? 'none' : 'auto';
+        mainChatButton.style.opacity = chatOpen ? '0.6' : '1';
+      }
+
+      // Observe visibility changes on custom chat
+      const observer = new MutationObserver(updateMainButtonState);
+      observer.observe(customChat, { attributes: true, attributeFilter: ['class'] });
+
+      // Also update state on any click (covers AI drawer toggles)
+      document.addEventListener('click', updateMainButtonState);
+
+      // Initial state
+      updateMainButtonState();
       
       // Toggle chat options drawer
       mainChatButton.addEventListener('click', function() {
@@ -1517,20 +1557,43 @@
       
       // Handle BorjBot option click
       borjbotOption.addEventListener('click', function() {
-        
         // Close the drawer
         isDrawerOpen = false;
         chatOptions.classList.remove('show');
+      });
+
+      // Handle AI Voice Agent option click
+      aiVoiceOption.addEventListener('click', function() {
+        // Hide chat options drawer
+        isDrawerOpen = false;
+        chatOptions.classList.remove('show');
+
+        // Show AI Voice drawer
+        aiVoiceDrawer.classList.add('show');
+      });
+
+      // Close AI Voice drawer
+      closeVoiceDrawer.addEventListener('click', function() {
+        aiVoiceDrawer.classList.remove('show');
+        // Restore chat options
+        chatOptions.classList.add('show');
+        isDrawerOpen = true;
       });
       
       // Close drawer when clicking outside
       document.addEventListener('click', function(event) {
         const isClickInsideChat = mainChatButton.contains(event.target) || 
-                                  chatOptions.contains(event.target);
+                                   chatOptions.contains(event.target) ||
+                                   aiVoiceDrawer.contains(event.target);
         
-        if (!isClickInsideChat && isDrawerOpen) {
-          isDrawerOpen = false;
-          chatOptions.classList.remove('show');
+        if (!isClickInsideChat) {
+          if (aiVoiceDrawer.classList.contains('show')) {
+            aiVoiceDrawer.classList.remove('show');
+          }
+          if (isDrawerOpen) {
+            isDrawerOpen = false;
+            chatOptions.classList.remove('show');
+          }
         }
       });
     });

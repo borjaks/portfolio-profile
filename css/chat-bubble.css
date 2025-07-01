@@ -247,3 +247,82 @@
   flex: 1;
   overflow: hidden;
 }
+
+/* AI Voice Agent icon styles */
+.ai-voice-icon {
+  background-color: #8a2be2; /* Purple */
+  box-shadow: 0 0 0 0 #8a2be2;
+  animation: pulsing-ai 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+/* Pulse animation for AI icon */
+@keyframes pulsing-ai {
+  to {
+    box-shadow: 0 0 0 18px rgba(138, 43, 226, 0);
+  }
+}
+
+/* AI Voice drawer */
+.ai-voice-drawer {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 350px;
+  height: 180px;
+  max-height: 70vh;
+  background: var(--bg-color, #ffffff);
+  border-radius: 10px;
+  box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+  display: none; /* hidden by default */
+  flex-direction: column;
+  z-index: 1100;
+  transform: translateY(100%);
+}
+
+.ai-voice-drawer.show {
+  display: flex;
+  animation: aiSlideIn 0.3s forwards;
+}
+
+@keyframes aiSlideIn {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+
+
+.ai-drawer-header {
+  padding: 15px;
+  background: #4169e1;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: space-between;
+  
+}
+
+
+.close-voice-drawer {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+}
+
+.ai-drawer-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 576px) {
+  .ai-voice-drawer {
+    width: 300px;
+    right: 10px;
+    bottom: 90px;
+  }
+}
+
