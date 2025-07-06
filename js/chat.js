@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const mainChatButton = document.querySelector(".main-chat-button");
   const chatOptions = document.getElementById("chatOptions");
   const borjbotOption = document.getElementById("borjbotOption");
-  const botStatusIndicator = document.getElementById("botStatusIndicator");
   const botStatusText = document.getElementById("botStatusText");
   
   // Webhook URL for checking BorjBot online status
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // Function to check if BorjBot is online
   async function checkBotStatus() {
-    botStatusIndicator.className = "status-indicator";
     botStatusText.className = "status-text";
     botStatusText.textContent = "Checking...";
     
@@ -51,18 +49,30 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // Function to set bot status to online
   function setBotOnline() {
-    botStatusIndicator.className = "status-indicator online";
+    const chatStatusIndicator = document.getElementById('chatStatusIndicator');
+    if (chatStatusIndicator) {
+      chatStatusIndicator.className = 'status-indicator online';
+      chatStatusIndicator.title = 'Online';
+    }
+    
     botStatusText.className = "status-text online";
     botStatusText.textContent = "Online";
-    
+    botStatusText.title = "BorjBot is online and ready to chat";
+    return true;
   }
-  
+
   // Function to set bot status to offline
   function setBotOffline() {
-    botStatusIndicator.className = "status-indicator offline";
+    const chatStatusIndicator = document.getElementById('chatStatusIndicator');
+    if (chatStatusIndicator) {
+      chatStatusIndicator.className = 'status-indicator offline';
+      chatStatusIndicator.title = 'Offline';
+    }
+    
     botStatusText.className = "status-text offline";
     botStatusText.textContent = "Offline";
-    console.log("BorjBot is offline!");
+    botStatusText.title = "BorjBot is currently offline";
+    return false;
   }
   
   // Check bot status immediately
@@ -271,6 +281,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Add user message to chat
       addMessage(message, "user");
+      
+      // Add loading message
+      const loadingMessageId = 'loading-message-' + Date.now();
+      const loadingDiv = document.createElement("div");
+      loadingDiv.id = loadingMessageId;
+      loadingDiv.className = "message bot loading";
+      loadingDiv.innerHTML = "<div class='typing-indicator'><span></span><span></span><span></span></div>Waiting for BorjBot to respond, please wait...";
+      chatMessages.appendChild(loadingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
 
       // Use the n8n chat client to send the message
       try {
@@ -428,6 +447,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      // Remove loading message if it still exists
+      const loadingMessage = document.getElementById(loadingMessageId);
+      if (loadingMessage) {
+        loadingMessage.remove();
+      }
+      
       // Re-enable input and button
       chatInput.disabled = false;
       sendMessageBtn.disabled = false;
@@ -438,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to add message to chat
     function addMessage(text, sender, saveToStorage = true) {
       const messageDiv = document.createElement("div");
-      messageDiv.className = `message ${sender}`;
+      messageDiv.className = `message ${sender} ${sender === 'bot' ? 'bot-message' : ''}`;
       messageDiv.textContent = text;
       chatMessages.appendChild(messageDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;

@@ -38,6 +38,28 @@
   margin: 0;
   font-size: 16px;
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 6px;
+  position: relative;
+}
+
+.status-indicator.online {
+  background-color: #4caf50;
+  box-shadow: 0 0 10px #4caf50;
+}
+
+.status-indicator.offline {
+  background-color: #f44336;
+  box-shadow: 0 0 10px #f44336;
 }
 
 .ai-drawer-header h3 {
@@ -98,6 +120,53 @@
 .message.bot {
   background: var(--bg-color);
   color: var(--text-color);
+  position: relative;
+  padding-left: 20px;
+}
+
+.message.loading {
+  opacity: 0.8;
+  font-style: italic;
+  color: #888;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  background-color: #888;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% { 
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% { 
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .chat-input {
